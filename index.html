@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<title>Timeline - KJZZ 91.5 FM - Your NPR News Station</title>
+
+
+
+<script language="javascript" TYPE="text/javascript">
+window.station="KJZZ_FM";
+window.localize=true;
+</script>
+
+<script src="http://simile.mit.edu/timeline/api/timeline-api.js" type="text/javascript"></script>
+
+<script src="/scripts/jsonStringify.js" type="text/javascript"></script>
+
+<script src="/scripts/json2.js" type="text/javascript"></script>
+
+<script language="javascript" TYPE="text/javascript">
+
+// pause script to pause computer
+// http://www.sean.co.uk/a/webdesign/javascriptdelay.shtm
+function pausecomp(millis)
+{
+var date = new Date();
+var curDate = null;
+
+do { curDate = new Date(); }
+while(curDate-date < millis);
+} 
+
+var jsondata;
+// url = "http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
+url = "http://johntynan.com/scripts/timeline/nprdata.js"
+
+// var jsondata = JSON.parse(jsondata);
+
+var http_request = new XMLHttpRequest();
+http_request.open( "GET", url, true );
+
+
+// pause script to load file?
+pausecomp(6000);
+
+// this http_request script is right out of wikipedia:
+// http://en.wikipedia.org/wiki/JSON
+
+http_request.onreadystatechange = function () {
+    if ( http_request.readyState == 4 ) {
+        if ( http_request.status == 200 ) {
+            jsondata = eval( "(" + http_request.responseText + ")" );
+        } else {
+            alert( "There was a problem with the URL." );
+        }
+        http_request = null;
+    }
+};
+http_request.send("")
+
+// why jsondata does not load unless there is an alert on the page is beyond me.
+alert(jsondata);
+
+</script>
+
+<script>
+// from the simile cubism tutorial
+// http://simile.mit.edu/timeline/examples/cubism/cubism.html
+
+        var tl;
+        function onLoad() {
+            var eventSource = new Timeline.DefaultEventSource(0);
+            
+            var theme = Timeline.ClassicTheme.create();
+            theme.event.bubble.width = 320;
+            theme.event.bubble.height = 220;
+            var d = Timeline.DateTime.parseGregorianDateTime("1900")
+            var bandInfos = [
+                Timeline.createBandInfo({
+                    width:          "100%", 
+                    intervalUnit:   Timeline.DateTime.DECADE, 
+                    intervalPixels: 200,
+                    eventSource:    eventSource,
+                    date:           d,
+                    theme:          theme
+                })
+            ];
+            
+            tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
+            tl.loadJSON("cubism.js", function(json, url) {
+                eventSource.loadJSON(json, url);
+            });
+        }
+        var resizeTimerID = null;
+        function onResize() {
+            if (resizeTimerID == null) {
+                resizeTimerID = window.setTimeout(function() {
+                    resizeTimerID = null;
+                    tl.layout();
+                }, 500);
+            }
+        }
+
+</script>
+
+
+
+
+</head>
+<body onload="onLoad();" onresize="onResize();" >
+
+<h1 style="text-transform: capitalize;">Timeline</h1>
+
+
+
+
+<script language="javascript" TYPE="text/javascript">
+
+document.writeln(url);
+document.writeln('<br>');
+document.writeln(jsondata.version);
+document.writeln('<br>');
+
+// turn JSON data into a string
+// http://www.sitepoint.com/forums/showthread.php?t=522950
+// http://www.thomasfrank.se/json_stringify_revisited.html
+
+// var jsonstring=JSONstring.make(jsondata);
+var jsonstring=JSONstring.make(jsondata.list.title.$text);
+document.writeln(jsonstring);
+// document.writeln('<br>');
+
+// var jsonstring=JSONstring.make(jsondata.list.story);
+// document.writeln('<br>');
+var jsonstring=JSONstring.make(jsondata.list.story[0]);
+document.writeln('<br>');
+
+
+// yay!  Now I can figure out if I'm accessing the JSON data properly.
+document.writeln(jsonstring);
+document.writeln('<br>');
+
+</script>
+
+
+<div id="body">
+
+    <div id="tl" class="timeline-default" style="height: 300px;">
+    </div>
+
+</div>
+</body>
+</html>
