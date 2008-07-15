@@ -50,6 +50,30 @@ pausecomp(3000);
 http_request.onreadystatechange = function () {
     if ( http_request.readyState == 4 ) {
         if ( http_request.status == 200 ) {
+<<<<<<< .mine
+			// alert(http_request.responseText);
+            // jsondata = eval( "(" + http_request.responseText + ")" );
+			
+			// use json2.js / JSON.parse instead of eval
+			newjsondata = JSON.parse(http_request.responseText);
+			// alert(jsondata);
+
+			// how to turn JSON data into a string
+			// http://www.sitepoint.com/forums/showthread.php?t=522950
+			// http://www.thomasfrank.se/json_stringify_revisited.html
+
+			//var jsonstring=JSONstring.make(newjsondata);
+			// var jsonstring=JSONstring.make(newjsondata.list.title.$text);
+			// var jsonstring=JSONstring.make(newjsondata.list.title.$text);
+			// var jsonstring=JSONstring.make(newjsondata.list.story[0]);
+			var jsonstring=JSONstring.make(newjsondata.list.story[0].link);
+
+			// document.writeln(jsonstring);			
+			// alert(jsonstring);
+			
+			// call function to convert jsondata into timeline format:
+			timelineConverter(newjsondata);
+=======
 			// alert(http_request.responseText);
             // jsondata = eval( "(" + http_request.responseText + ")" );
 			
@@ -69,6 +93,7 @@ http_request.onreadystatechange = function () {
 
 			// document.writeln(jsonstring);			
 			alert(jsonstring);
+>>>>>>> .r3
         } else {
             alert( "There was a problem with the URL." );
         }
@@ -79,12 +104,35 @@ http_request.send("")
 
 
 // why jsondata does not load unless there is an alert on the page is beyond me.
+<<<<<<< .mine
+// alert(newjsondata);
+</script>
+=======
 // alert(jsondata);
+>>>>>>> .r3
+
+<script language="javascript" TYPE="text/javascript">
+function timelineConverter(newjsondata){
+	var x;
+	// alert(JSONstring.make(newjsondata));
+	for (x = 0; x < newjsondata.count ; x++);
+	{
+	// var buildstring = "<a href=" + jsondata.value.items[x].link + ">" + jsondata.value.items[x].title "</a>";
+	var buildstring = (newjsondata.value.items[x]);
+	// document.write(buildstring);
+	alert(buildstring);
+	buildstring = null;
+	}
+}
 
 </script>
 
+<<<<<<< .mine
+<script language="javascript" TYPE="text/javascript">
+=======
 
 <script language="javascript" TYPE="text/javascript">
+>>>>>>> .r3
 // from the simile cubism tutorial
 // http://simile.mit.edu/timeline/examples/cubism/cubism.html
 
@@ -136,7 +184,11 @@ http_request.send("")
 
 <script language="javascript" TYPE="text/javascript">
 
+<<<<<<< .mine
+/*
+=======
 /* 
+>>>>>>> .r3
 document.writeln(url);
 document.writeln('<br>');
 // document.writeln(jsondata.version);
@@ -160,7 +212,7 @@ document.writeln('<br>');
 // yay!  Now I can figure out if I'm accessing the JSON data properly.
 document.writeln(jsonstring);
 document.writeln('<br>');
-
+*/
 */
 </script>
 
