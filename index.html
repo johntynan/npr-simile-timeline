@@ -16,7 +16,6 @@ window.localize=true;
 
 <script src="/scripts/json2.js" type="text/javascript"></script>
 
-
 <script language="javascript" TYPE="text/javascript">
 
 // pause script to pause computer
@@ -31,26 +30,24 @@ while(curDate-date < millis);
 } 
 
 var jsondata;
-// url="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
-
-// placing data on the filesytem as workaround to get beyond error: Permission denied to call method XMLHttpRequest.open
+// url = "http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
 url = "http://johntynan.com/scripts/timeline/nprdata.js"
+
+// var jsondata = JSON.parse(jsondata);
 
 var http_request = new XMLHttpRequest();
 http_request.open( "GET", url, true );
 
 
 // pause script to load file?
-pausecomp(3000);
+pausecomp(6000);
 
-// the starting point for this http_request script is right out of wikipedia:
+// this http_request script is right out of wikipedia:
 // http://en.wikipedia.org/wiki/JSON
-
 
 http_request.onreadystatechange = function () {
     if ( http_request.readyState == 4 ) {
         if ( http_request.status == 200 ) {
-<<<<<<< .mine
 			// alert(http_request.responseText);
             // jsondata = eval( "(" + http_request.responseText + ")" );
 			
@@ -73,27 +70,6 @@ http_request.onreadystatechange = function () {
 			
 			// call function to convert jsondata into timeline format:
 			timelineConverter(newjsondata);
-=======
-			// alert(http_request.responseText);
-            // jsondata = eval( "(" + http_request.responseText + ")" );
-			
-			// use json2.js / JSON.parse instead of eval
-			jsondata = JSON.parse(http_request.responseText)
-			// alert(jsondata);
-
-			// how to turn JSON data into a string
-			// http://www.sitepoint.com/forums/showthread.php?t=522950
-			// http://www.thomasfrank.se/json_stringify_revisited.html
-
-			//var jsonstring=JSONstring.make(jsondata);
-			// var jsonstring=JSONstring.make(jsondata.list.title.$text);
-			// var jsonstring=JSONstring.make(jsondata.list.title.$text);
-			// var jsonstring=JSONstring.make(jsondata.list.story[0]);
-			var jsonstring=JSONstring.make(jsondata.list.story[0].link);
-
-			// document.writeln(jsonstring);			
-			alert(jsonstring);
->>>>>>> .r3
         } else {
             alert( "There was a problem with the URL." );
         }
@@ -102,14 +78,9 @@ http_request.onreadystatechange = function () {
 };
 http_request.send("")
 
-
 // why jsondata does not load unless there is an alert on the page is beyond me.
-<<<<<<< .mine
 // alert(newjsondata);
 </script>
-=======
-// alert(jsondata);
->>>>>>> .r3
 
 <script language="javascript" TYPE="text/javascript">
 function timelineConverter(newjsondata){
@@ -120,19 +91,14 @@ function timelineConverter(newjsondata){
 	// var buildstring = "<a href=" + jsondata.value.items[x].link + ">" + jsondata.value.items[x].title "</a>";
 	var buildstring = (newjsondata.value.items[x]);
 	// document.write(buildstring);
-	alert(buildstring);
+	// alert(buildstring);
 	buildstring = null;
 	}
 }
 
 </script>
 
-<<<<<<< .mine
 <script language="javascript" TYPE="text/javascript">
-=======
-
-<script language="javascript" TYPE="text/javascript">
->>>>>>> .r3
 // from the simile cubism tutorial
 // http://simile.mit.edu/timeline/examples/cubism/cubism.html
 
@@ -175,23 +141,20 @@ function timelineConverter(newjsondata){
 
 
 
-
-
 </head>
 <body onload="onLoad();" onresize="onResize();" >
 
 <h1 style="text-transform: capitalize;">Timeline</h1>
 
+
+
+
 <script language="javascript" TYPE="text/javascript">
 
-<<<<<<< .mine
 /*
-=======
-/* 
->>>>>>> .r3
 document.writeln(url);
 document.writeln('<br>');
-// document.writeln(jsondata.version);
+document.writeln(jsondata.version);
 document.writeln('<br>');
 
 // turn JSON data into a string
@@ -212,7 +175,6 @@ document.writeln('<br>');
 // yay!  Now I can figure out if I'm accessing the JSON data properly.
 document.writeln(jsonstring);
 document.writeln('<br>');
-*/
 */
 </script>
 
