@@ -52,24 +52,25 @@ http_request.onreadystatechange = function () {
             // jsondata = eval( "(" + http_request.responseText + ")" );
 			
 			// use json2.js / JSON.parse instead of eval
-			newjsondata = JSON.parse(http_request.responseText);
+			jsondata = JSON.parse(http_request.responseText);
 			// alert(jsondata);
 
 			// how to turn JSON data into a string
 			// http://www.sitepoint.com/forums/showthread.php?t=522950
 			// http://www.thomasfrank.se/json_stringify_revisited.html
 
-			//var jsonstring=JSONstring.make(newjsondata);
-			// var jsonstring=JSONstring.make(newjsondata.list.title.$text);
-			// var jsonstring=JSONstring.make(newjsondata.list.title.$text);
-			// var jsonstring=JSONstring.make(newjsondata.list.story[0]);
-			var jsonstring=JSONstring.make(newjsondata.list.story[0].link);
+			//var jsonstring=JSONstring.make(jsondata);
+			// var jsonstring=JSONstring.make(jsondata.list.title.$text);
+			// var jsonstring=JSONstring.make(jsondata.list.title.$text);
+			// var jsonstring=JSONstring.make(jsondata.list.story[0]);
+			var jsonstring=JSONstring.make(jsondata.list.story[0].link);
 
 			// document.writeln(jsonstring);			
 			// alert(jsonstring);
 			
 			// call function to convert jsondata into timeline format:
-			timelineConverter(newjsondata);
+			timelineConverter(jsondata);
+
         } else {
             alert( "There was a problem with the URL." );
         }
@@ -78,21 +79,27 @@ http_request.onreadystatechange = function () {
 };
 http_request.send("")
 
-// why jsondata does not load unless there is an alert on the page is beyond me.
-// alert(newjsondata);
-</script>
+// alert(JSONstring.make(jsondata.list.story[0].link);
 
-<script language="javascript" TYPE="text/javascript">
 function timelineConverter(newjsondata){
+	var entries = newjsondata.list;
+	// alert(JSONstring.make(entries));
+	// alert(entries.count);
 	var x;
 	// alert(JSONstring.make(newjsondata));
-	for (x = 0; x < newjsondata.count ; x++);
-	{
-	// var buildstring = "<a href=" + jsondata.value.items[x].link + ">" + jsondata.value.items[x].title "</a>";
-	var buildstring = (newjsondata.value.items[x]);
-	// document.write(buildstring);
-	// alert(buildstring);
-	buildstring = null;
+	// newjsondata = JSON.parse(newjsondata);
+	// for (x = 0; x < newjsondata.count ; x++){
+	// for (x = 0; x < entries.count ; x++){
+	for (x = 0; x < 5 ; x++){
+		alert(x);
+		// alert(newjsondata.list.count);
+		// var buildstring = "<a href=" + newjsondata.value.items[x].link + ">" + newjsondata.value.items[x].title "</a>";
+		//var buildstring = (newjsondata.list.story[x]);
+		// var buildstring = (newjsondata.list.story[x].link);
+		var buildstring = (entries.story[x].link);
+		// document.writeln(buildstring);
+		alert(JSONstring.make(buildstring));
+		buildstring = null;
 	}
 }
 
