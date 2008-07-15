@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
 <head>
-<title>Timeline - KJZZ 91.5 FM - Your NPR News Station</title>
+<title>SIMILE Timeline of Stories from NPR</title>
 
 
 
@@ -81,26 +81,71 @@ http_request.send("")
 
 // alert(JSONstring.make(jsondata.list.story[0].link);
 
+newtimeline = []
+
 function timelineConverter(newjsondata){
-	var entries = newjsondata.list;
-	// alert(JSONstring.make(entries));
-	// alert(entries.count);
-	var x;
-	// alert(JSONstring.make(newjsondata));
 	// newjsondata = JSON.parse(newjsondata);
+	// alert(JSONstring.make(newjsondata));
+
+	var entries = newjsondata.list;
+	// alert(entries);
+	// alert(JSONstring.make(entries));
+
+	var x;
 	// for (x = 0; x < newjsondata.count ; x++){
 	// for (x = 0; x < entries.count ; x++){
 	for (x = 0; x < 5 ; x++){
-		alert(x);
+		// alert(x);
 		// alert(newjsondata.list.count);
-		// var buildstring = "<a href=" + newjsondata.value.items[x].link + ">" + newjsondata.value.items[x].title "</a>";
-		//var buildstring = (newjsondata.list.story[x]);
+		// var buildstring = (newjsondata.list.story[x]);
 		// var buildstring = (newjsondata.list.story[x].link);
-		var buildstring = (entries.story[x].link);
-		// document.writeln(buildstring);
-		alert(JSONstring.make(buildstring));
+		// var buildstring = (entries.story[x].link[0].$text);
+		// var buildstring = (entries.story[x].title.$text);
+		// var buildstring = (entries.story[x].storyDate.$text);
+		var buildstring = (entries.story[x].teaser.$text);
+		// alert(JSONstring.make(buildstring));
 		buildstring = null;
+		nprico = "http://npr.org/favicon.ico"
+		// newtimeline[x] = {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico};
+		newtimeline[x] = {'dateTimeFormat': 'iso8601', 'wikiURL': "http://simile.mit.edu/shelf/",'wikiSection': "Simile Timeline of Stories from NPR", 'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico}};
+		
 	}
+	// alert(JSONstring.make(newtimeline));
+
+loadNewTimeline(newtimeline);
+
+}
+
+
+        function loadNewTimeline(newtimeline) {
+	var buildstring = newtimeline;
+	// var buildstring = (newtimeline[0].title);
+	alert(JSONstring.make(buildstring));
+	var eventSource = new Timeline.DefaultEventSource(0);
+            
+            var theme = Timeline.ClassicTheme.create();
+            theme.event.bubble.width = 320;
+            theme.event.bubble.height = 220;
+            var d = Timeline.DateTime.parseGregorianDateTime("2008")
+            var bandInfos = [
+                Timeline.createBandInfo({
+                    width:          "100%", 
+                    intervalUnit:   Timeline.DateTime.DECADE, 
+                    intervalPixels: 200,
+                    eventSource:    eventSource,
+                    date:           d,
+                    theme:          theme
+                })
+            ];
+
+	tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
+	// tl.loadJSON(newtimeline, function(json, url) {
+	// tl.loadJSON(newtimeline, function(json) {
+	// eventSource.loadJSON(json, url);
+	// eventSource.loadJSON(json);
+	eventSource.addMany(newtimeline);
+	// tl.loadJSON(newtimeline);
+	// eventSource.loadJSON(newtimeline);
 }
 
 </script>
@@ -152,38 +197,6 @@ function timelineConverter(newjsondata){
 <body onload="onLoad();" onresize="onResize();" >
 
 <h1 style="text-transform: capitalize;">Timeline</h1>
-
-
-
-
-<script language="javascript" TYPE="text/javascript">
-
-/*
-document.writeln(url);
-document.writeln('<br>');
-document.writeln(jsondata.version);
-document.writeln('<br>');
-
-// turn JSON data into a string
-// http://www.sitepoint.com/forums/showthread.php?t=522950
-// http://www.thomasfrank.se/json_stringify_revisited.html
-
-// var jsonstring=JSONstring.make(jsondata);
-var jsonstring=JSONstring.make(jsondata.list.title.$text);
-document.writeln(jsonstring);
-// document.writeln('<br>');
-
-// var jsonstring=JSONstring.make(jsondata.list.story);
-// document.writeln('<br>');
-var jsonstring=JSONstring.make(jsondata.list.story[0]);
-document.writeln('<br>');
-
-
-// yay!  Now I can figure out if I'm accessing the JSON data properly.
-document.writeln(jsonstring);
-document.writeln('<br>');
-*/
-</script>
 
 
 <div id="body">
