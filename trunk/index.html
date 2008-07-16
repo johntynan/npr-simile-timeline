@@ -3,8 +3,6 @@
 <head>
 <title>SIMILE Timeline of Stories from NPR</title>
 
-
-
 <script language="javascript" TYPE="text/javascript">
 window.station="KJZZ_FM";
 window.localize=true;
@@ -16,7 +14,19 @@ window.localize=true;
 
 <script src="/scripts/json2.js" type="text/javascript"></script>
 
+<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=ws_results" type="text/javascript"></script>
+
 <script language="javascript" TYPE="text/javascript">
+
+function ws_results(obj) {
+	alert(obj.list.title.$text);
+}
+</script>
+
+
+
+<script language="javascript" TYPE="text/javascript">
+
 
 // pause script to pause computer
 // http://www.sean.co.uk/a/webdesign/javascriptdelay.shtm
@@ -29,9 +39,11 @@ do { curDate = new Date(); }
 while(curDate-date < millis);
 } 
 
+
 var jsondata;
-// url = "http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
 url = "http://johntynan.com/scripts/timeline/nprdata.js"
+
+// url = "http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
 
 // var jsondata = JSON.parse(jsondata);
 
