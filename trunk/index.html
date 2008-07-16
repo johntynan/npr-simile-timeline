@@ -94,7 +94,9 @@ function timelineConverter(newjsondata){
 	var x;
 	// for (x = 0; x < newjsondata.count ; x++){
 	// for (x = 0; x < entries.count ; x++){
-	for (x = 0; x < 5 ; x++){
+	for (x = 0; x < 3 ; x++){
+
+ 
 		// alert(x);
 		// alert(newjsondata.list.count);
 		// var buildstring = (newjsondata.list.story[x]);
@@ -107,8 +109,14 @@ function timelineConverter(newjsondata){
 		buildstring = null;
 		nprico = "http://npr.org/favicon.ico"
 		// newtimeline[x] = {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico};
+		if(x == 0)
+		{
 		newtimeline[x] = {'dateTimeFormat': 'iso8601', 'wikiURL': "http://simile.mit.edu/shelf/",'wikiSection': "Simile Timeline of Stories from NPR", 'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico}};
-		
+		}
+		else
+		{
+		newtimeline[x] = {'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico}};
+		}
 	}
 	// alert(JSONstring.make(newtimeline));
 
