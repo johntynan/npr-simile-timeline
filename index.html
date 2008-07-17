@@ -103,12 +103,29 @@ function timelineConverter(newjsondata){
 	// alert(entries);
 	// alert(JSONstring.make(entries));
 
+	// used to do this within loadNewTimeline, now trying it here:
+	var eventSource = new Timeline.DefaultEventSource();
+	var theme = Timeline.ClassicTheme.create();
+	theme.event.bubble.width = 320;
+	theme.event.bubble.height = 220;
+	var d = Timeline.DateTime.parseGregorianDateTime("2008")
+	var bandInfos = [
+                Timeline.createBandInfo({
+                    width:          "100%", 
+                    intervalUnit:   Timeline.DateTime.DECADE, 
+                    intervalPixels: 200,
+                    eventSource:    eventSource,
+                    date:           d,
+                    theme:          theme
+                })
+	];
+	tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
+	
 	var x;
 	// for (x = 0; x < newjsondata.count ; x++){
 	// for (x = 0; x < entries.count ; x++){
 	for (x = 0; x < 3 ; x++){
 
- 
 		// alert(x);
 		// alert(newjsondata.list.count);
 		// var buildstring = (newjsondata.list.story[x]);
@@ -120,19 +137,62 @@ function timelineConverter(newjsondata){
 		// alert(JSONstring.make(buildstring));
 		buildstring = null;
 		nprico = "http://npr.org/favicon.ico"
-		// newtimeline[x] = {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico};
+		color = "green"
+		
+		// making data for timeline out of data from data
 		if(x == 0)
 		{
-		newtimeline[x] = {'dateTimeFormat': 'iso8601', 'wikiURL': "http://simile.mit.edu/shelf/",'wikiSection': "Simile Timeline of Stories from NPR", 'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico}};
+		newtimeline[x] = {'dateTimeFormat': 'iso8601', 'wikiURL': "http://simile.mit.edu/shelf/",'wikiSection': "Simile Timeline of Stories from NPR", 'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico, color: color}};
 		}
 		else
 		{
-		newtimeline[x] = {'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico}};
+		newtimeline[x] = {'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico, color: color}};
 		}
-	}
+
 	// alert(JSONstring.make(newtimeline));
 
-loadNewTimeline(newtimeline);
+	// loadNewTimeline(newtimeline);
+
+		// used to do this within loadNewTimeline, now trying it here:
+		var evt = new Timeline.DefaultEventSource.Event(
+		entries.story[x].storyDate.$text, //start
+		entries.story[x].storyDate.$text, //end
+		entries.story[x].storyDate.$text, //latestStart
+		entries.story[x].storyDate.$text, //earliestEnd
+		true, //instant
+		entries.story[x].title.$text, //text
+		entries.story[x].teaser.$text, // description
+		nprico, // image
+		entries.story[x].link[0].$text, // link
+		nprico, // icon
+		color // color
+		);
+		alert(JSONstring.make(evt));
+		eventSource.add(evt);
+	}
+
+//create the timeline
+  var bandInfos = [
+    Timeline.createBandInfo({
+        trackGap:       0.2,
+        width:          "100%",
+        intervalUnit:   Timeline.DateTime.DAY,
+        intervalPixels: 200,
+        eventSource: eventSource
+    }),
+    Timeline.createBandInfo({
+        showEventText:  false,
+        trackHeight:    0.5,
+        trackGap:       0.2,
+        width:          "30%",
+        intervalUnit:   Timeline.DateTime.MONTH,
+        intervalPixels: 150,
+        eventSource: eventSource
+    })
+  ];
+  bandInfos[1].syncWith = 0;
+  bandInfos[1].highlight = true;
+  tl = Timeline.create(document.getElementById("tl"), bandInfos); 
 
 }
 
@@ -163,9 +223,36 @@ loadNewTimeline(newtimeline);
 	// tl.loadJSON(newtimeline, function(json) {
 	// eventSource.loadJSON(json, url);
 	// eventSource.loadJSON(json);
-	eventSource.addMany(newtimeline);
+
 	// tl.loadJSON(newtimeline);
 	// eventSource.loadJSON(newtimeline);
+
+	// okay, this appears to be difficult, let's see what else we can do
+	// eventSource.addMany(newtimeline);
+		
+	// eventSource.addMany(newtimeline);
+/*	
+
+*/
+	// var entries = newtimeline;
+	var x;
+	// for (x = 0; x < entries.count ; x++){
+	for (x = 0; x < 3 ; x++){
+	// alert (entries.count);
+	nprico = "http://npr.org/favicon.ico"
+	color = "green"
+	var evt = new Timeline.DefaultEventSource.Event(
+        newtimeline.story[x].storyDate.$text, //start
+        newtimeline.story[x].storyDate.$text, //end
+        newtimeline.story[x].storyDate.$text, //latestStart
+        newtimeline.story[x].storyDate.$text, //earliestEnd
+        true, //instant
+        "Event " + newtimeline.story[x].title.$text, //text
+        "Description for Event " + newtimeline.story[x].teaser.$text //description
+	);
+	eventSource.add(evt);
+	}
+	
 }
 
 </script>
