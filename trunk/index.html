@@ -41,7 +41,7 @@ http_request.open( "GET", url, true );
 
 
 // pause script to load file?
-pausecomp(6000);
+pausecomp(3000);
 
 // this http_request script is right out of wikipedia:
 // http://en.wikipedia.org/wiki/JSON
@@ -70,6 +70,7 @@ http_request.onreadystatechange = function () {
 			// alert(jsonstring);
 			
 			// call function to convert jsondata into timeline format:
+			// commented out to test live query of npr api:
 			timelineConverter(jsondata);
 
         } else {
@@ -85,6 +86,8 @@ http_request.send("")
 newtimeline = []
 
 function timelineConverter(newjsondata){
+
+	pausecomp(9000);
 	// newjsondata = JSON.parse(newjsondata);
 	// alert(JSONstring.make(newjsondata));
 
@@ -145,6 +148,7 @@ function timelineConverter(newjsondata){
 	}
 
 	//create the timeline
+        var tl;
 	
 	var theme = Timeline.ClassicTheme.create();
 	theme.event.bubble.width = 320;
@@ -153,35 +157,50 @@ function timelineConverter(newjsondata){
 	var bandInfos = [
                 Timeline.createBandInfo({
                     width:          "100%", 
-                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalUnit:   Timeline.DateTime.DECADE, 
                     intervalPixels: 200,
                     eventSource:    eventSource,
                     date:           d,
                     theme:          theme
                 })
 	];
-	tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
-	
-}
 
+  bandInfos[0].syncWith = 0;
+  bandInfos[0].highlight = true;
+  tl = Timeline.create(document.getElementById("my-timeline"), bandInfos); 
+	
+        var resizeTimerID = null;
+        function onResize() {
+            if (resizeTimerID == null) {
+                resizeTimerID = window.setTimeout(function() {
+                    resizeTimerID = null;
+                    tl.layout();
+                }, 500);
+            }
+	}
+}
 </script>
 
 
 <script language="javascript" TYPE="text/javascript">
 
 function ws_results(obj) {
-	alert(obj.list.title.$text);
+	// alert(obj.list.title.$text);
 }
 </script>
 
-<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=ws_results" type="text/javascript"></script>
+<!-- 
+<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=timelineConverter" type="text/javascript"></script>
+-->
 
 <script language="javascript" TYPE="text/javascript">
 // from the simile cubism tutorial
 // http://simile.mit.edu/timeline/examples/cubism/cubism.html
 
+
         var tl;
-        function onLoad() {
+
+	function onLoad() {
             var eventSource = new Timeline.DefaultEventSource(0);
             
             var theme = Timeline.ClassicTheme.create();
@@ -213,7 +232,6 @@ function ws_results(obj) {
                 }, 500);
             }
         }
-
 </script>
 
 
@@ -227,9 +245,11 @@ function ws_results(obj) {
 
 <div id="body">
 
-    <div id="tl" class="timeline-default" style="height: 300px;">
+    <div id="my-timeline" class="timeline-default" style="height: 300px;">
     </div>
-
+    <div id="tl" class="timeline-default" style="height: 300px; visibility:hidden;">
+    </div>
+    
 </div>
 </body>
 </html>
