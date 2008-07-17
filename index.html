@@ -29,80 +29,39 @@ while(curDate-date < millis);
 } 
 
 
-var jsondata;
-url = "http://johntynan.com/scripts/timeline/nprdata.js"
+</script>
 
-// url = "http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
+<script language="javascript" TYPE="text/javascript">
+// from the simile cubism tutorial
+// http://simile.mit.edu/timeline/examples/cubism/cubism.html
+var tl;
+function onLoad(newjsondata) {
 
-// var jsondata = JSON.parse(jsondata);
+	entries = newjsondata.list
 
-var http_request = new XMLHttpRequest();
-http_request.open( "GET", url, true );
+	var eventSource = new Timeline.DefaultEventSource();
 
+/*
+	// from example here: http://blog.jeromeparadis.com/archive/2007/06/28/SIMILE-Timeline-Manually-Adding-Events.aspx
+	//Generate 50 random events up to 20 days in the past or the future
+	for(var i=0;i<50;i++) {
+	var dateEvent = new Date();
+	dateEvent.setTime(dateEvent.getTime() + ((Math.floor(Math.random()*41) - 20) * 24 * 60 * 60 * 1000));
+	var evt = new Timeline.DefaultEventSource.Event(
+		dateEvent, //start
+		dateEvent, //end
+		dateEvent, //latestStart
+		dateEvent, //earliestEnd
+		true, //instant
+		"Event " + i, //text
+		"Description for Event " + i //description
+		);
 
-// pause script to load file?
-pausecomp(3000);
-
-// this http_request script is right out of wikipedia:
-// http://en.wikipedia.org/wiki/JSON
-
-http_request.onreadystatechange = function () {
-    if ( http_request.readyState == 4 ) {
-        if ( http_request.status == 200 ) {
-			// alert(http_request.responseText);
-            // jsondata = eval( "(" + http_request.responseText + ")" );
-			
-			// use json2.js / JSON.parse instead of eval
-			jsondata = JSON.parse(http_request.responseText);
-			// alert(jsondata);
-
-			// how to turn JSON data into a string
-			// http://www.sitepoint.com/forums/showthread.php?t=522950
-			// http://www.thomasfrank.se/json_stringify_revisited.html
-
-			//var jsonstring=JSONstring.make(jsondata);
-			// var jsonstring=JSONstring.make(jsondata.list.title.$text);
-			// var jsonstring=JSONstring.make(jsondata.list.title.$text);
-			// var jsonstring=JSONstring.make(jsondata.list.story[0]);
-			var jsonstring=JSONstring.make(jsondata.list.story[0].link);
-
-			// document.writeln(jsonstring);			
-			// alert(jsonstring);
-			
-			// call function to convert jsondata into timeline format:
-			// commented out to test live query of npr api:
-			timelineConverter(jsondata);
-
-        } else {
-            alert( "There was a problem with the URL." );
-        }
-        http_request = null;
-    }
-};
-http_request.send("")
-
-// alert(JSONstring.make(jsondata.list.story[0].link);
-
-newtimeline = []
-
-function timelineConverter(newjsondata){
-
-	pausecomp(9000);
-	// newjsondata = JSON.parse(newjsondata);
-	// alert(JSONstring.make(newjsondata));
-
-	var entries = newjsondata.list;
-	// alert(entries);
-	// alert(JSONstring.make(entries));
-
-	// used to do this within loadNewTimeline, now trying it here:
-	var eventSource = new Timeline.DefaultEventSource(0);
-	
-	var x;
-	// for (x = 0; x < newjsondata.count ; x++){
+*/      
+      // start new code
+      	var x;
 	// for (x = 0; x < entries.count ; x++){
 	for (x = 0; x < 3 ; x++){
-
 		// alert(x);
 		// alert(newjsondata.list.count);
 		// var buildstring = (newjsondata.list.story[x]);
@@ -116,20 +75,6 @@ function timelineConverter(newjsondata){
 		nprico = "http://npr.org/favicon.ico"
 		color = "green"
 		
-		// making data for timeline out of data from data
-		if(x == 0)
-		{
-		newtimeline[x] = {'dateTimeFormat': 'iso8601', 'wikiURL': "http://simile.mit.edu/shelf/",'wikiSection': "Simile Timeline of Stories from NPR", 'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico, color: color}};
-		}
-		else
-		{
-		newtimeline[x] = {'events' : {link: entries.story[x].link[0].$text, title: entries.story[x].title.$text, start: entries.story[x].storyDate.$text, headline: entries.story[x].teaser.$text, image: nprico, color: color}};
-		}
-
-	// alert(JSONstring.make(newtimeline));
-
-	// loadNewTimeline(newtimeline);
-
 		var evt = new Timeline.DefaultEventSource.Event(
 		entries.story[x].storyDate.$text, //start
 		entries.story[x].storyDate.$text, //end
@@ -144,43 +89,46 @@ function timelineConverter(newjsondata){
 		color // color
 		);
 		alert(JSONstring.make(evt));
-		eventSource.add(evt);
-	}
+		// end new code
 
-	//create the timeline
-        var tl;
-	
-	var theme = Timeline.ClassicTheme.create();
-	theme.event.bubble.width = 320;
-	theme.event.bubble.height = 220;
-	var d = Timeline.DateTime.parseGregorianDateTime("2008")
-	var bandInfos = [
-                Timeline.createBandInfo({
-                    width:          "100%", 
-                    intervalUnit:   Timeline.DateTime.DECADE, 
-                    intervalPixels: 200,
-                    eventSource:    eventSource,
-                    date:           d,
-                    theme:          theme
-                })
-	];
 
-  bandInfos[0].syncWith = 0;
-  bandInfos[0].highlight = true;
-  tl = Timeline.create(document.getElementById("my-timeline"), bandInfos); 
-	
-        var resizeTimerID = null;
-        function onResize() {
-            if (resizeTimerID == null) {
-                resizeTimerID = window.setTimeout(function() {
-                    resizeTimerID = null;
-                    tl.layout();
-                }, 500);
-            }
-	}
+      eventSource.add(evt);
+  }
+  //create the timeline
+  var bandInfos = [
+    Timeline.createBandInfo({
+        trackGap:       0.2,
+        width:          "70%",
+        intervalUnit:   Timeline.DateTime.WEEK,
+        intervalPixels: 50,
+        eventSource: eventSource
+    }),
+    Timeline.createBandInfo({
+        showEventText:  false,
+        trackHeight:    0.5,
+        trackGap:       0.2,
+        width:          "30%",
+        intervalUnit:   Timeline.DateTime.YEAR,
+        intervalPixels: 150,
+        eventSource: eventSource
+    })
+  ];
+  bandInfos[1].syncWith = 0;
+  bandInfos[1].highlight = true;
+  tl = Timeline.create(document.getElementById("my-timeline"), bandInfos);
+
+}
+
+var resizeTimerID = null;
+function onResize() {
+    if (resizeTimerID == null) {
+        resizeTimerID = window.setTimeout(function() {
+            resizeTimerID = null;
+            tl.layout();
+        }, 500);
+    }
 }
 </script>
-
 
 <script language="javascript" TYPE="text/javascript">
 
@@ -189,57 +137,13 @@ function ws_results(obj) {
 }
 </script>
 
-<!-- 
-<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=timelineConverter" type="text/javascript"></script>
--->
-
-<script language="javascript" TYPE="text/javascript">
-// from the simile cubism tutorial
-// http://simile.mit.edu/timeline/examples/cubism/cubism.html
-
-
-        var tl;
-
-	function onLoad() {
-            var eventSource = new Timeline.DefaultEventSource(0);
-            
-            var theme = Timeline.ClassicTheme.create();
-            theme.event.bubble.width = 320;
-            theme.event.bubble.height = 220;
-            var d = Timeline.DateTime.parseGregorianDateTime("1900")
-            var bandInfos = [
-                Timeline.createBandInfo({
-                    width:          "100%", 
-                    intervalUnit:   Timeline.DateTime.DECADE, 
-                    intervalPixels: 200,
-                    eventSource:    eventSource,
-                    date:           d,
-                    theme:          theme
-                })
-            ];
-            
-            tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
-            tl.loadJSON("cubism.js", function(json, url) {
-                eventSource.loadJSON(json, url);
-            });
-        }
-        var resizeTimerID = null;
-        function onResize() {
-            if (resizeTimerID == null) {
-                resizeTimerID = window.setTimeout(function() {
-                    resizeTimerID = null;
-                    tl.layout();
-                }, 500);
-            }
-        }
-</script>
-
-
 
 
 </head>
+<body  onresize="onResize();" >
+<!-- 
 <body onload="onLoad();" onresize="onResize();" >
-
+-->
 <h1 style="text-transform: capitalize;">Timeline</h1>
 
 
@@ -247,9 +151,15 @@ function ws_results(obj) {
 
     <div id="my-timeline" class="timeline-default" style="height: 300px;">
     </div>
-    <div id="tl" class="timeline-default" style="height: 300px; visibility:hidden;">
-    </div>
     
 </div>
+
+<!--
+Query for the election:
+<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=timelineConverter" type="text/javascript"></script>
+-->
+<!--
+query for arts -->
+<script src="http://api.npr.org/query?id=1008&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=onLoad" type="text/javascript"></script>
 </body>
 </html>
