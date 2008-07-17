@@ -112,7 +112,7 @@ function timelineConverter(newjsondata){
 	var bandInfos = [
                 Timeline.createBandInfo({
                     width:          "100%", 
-                    intervalUnit:   Timeline.DateTime.DECADE, 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
                     intervalPixels: 200,
                     eventSource:    eventSource,
                     date:           d,
@@ -173,85 +173,18 @@ function timelineConverter(newjsondata){
 
 //create the timeline
   var bandInfos = [
-    Timeline.createBandInfo({
-        trackGap:       0.2,
-        width:          "100%",
-        intervalUnit:   Timeline.DateTime.DAY,
-        intervalPixels: 200,
-        eventSource: eventSource
-    }),
-    Timeline.createBandInfo({
-        showEventText:  false,
-        trackHeight:    0.5,
-        trackGap:       0.2,
-        width:          "30%",
-        intervalUnit:   Timeline.DateTime.MONTH,
-        intervalPixels: 150,
-        eventSource: eventSource
-    })
-  ];
+	Timeline.createBandInfo({
+	width:          "100%", 
+	intervalUnit:   Timeline.DateTime.YEAR, 
+	intervalPixels: 200,
+	eventSource:    eventSource,
+	date:           d,
+        theme:          theme
+	})
+		];
   bandInfos[1].syncWith = 0;
   bandInfos[1].highlight = true;
   tl = Timeline.create(document.getElementById("tl"), bandInfos); 
-
-}
-
-
-        function loadNewTimeline(newtimeline) {
-	var buildstring = newtimeline;
-	// var buildstring = (newtimeline[0].title);
-	alert(JSONstring.make(buildstring));
-	var eventSource = new Timeline.DefaultEventSource(0);
-            
-            var theme = Timeline.ClassicTheme.create();
-            theme.event.bubble.width = 320;
-            theme.event.bubble.height = 220;
-            var d = Timeline.DateTime.parseGregorianDateTime("2008")
-            var bandInfos = [
-                Timeline.createBandInfo({
-                    width:          "100%", 
-                    intervalUnit:   Timeline.DateTime.DECADE, 
-                    intervalPixels: 200,
-                    eventSource:    eventSource,
-                    date:           d,
-                    theme:          theme
-                })
-            ];
-
-	tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
-	// tl.loadJSON(newtimeline, function(json, url) {
-	// tl.loadJSON(newtimeline, function(json) {
-	// eventSource.loadJSON(json, url);
-	// eventSource.loadJSON(json);
-
-	// tl.loadJSON(newtimeline);
-	// eventSource.loadJSON(newtimeline);
-
-	// okay, this appears to be difficult, let's see what else we can do
-	// eventSource.addMany(newtimeline);
-		
-	// eventSource.addMany(newtimeline);
-/*	
-
-*/
-	// var entries = newtimeline;
-	var x;
-	// for (x = 0; x < entries.count ; x++){
-	for (x = 0; x < 3 ; x++){
-	// alert (entries.count);
-	nprico = "http://npr.org/favicon.ico"
-	color = "green"
-	var evt = new Timeline.DefaultEventSource.Event(
-        newtimeline.story[x].storyDate.$text, //start
-        newtimeline.story[x].storyDate.$text, //end
-        newtimeline.story[x].storyDate.$text, //latestStart
-        newtimeline.story[x].storyDate.$text, //earliestEnd
-        true, //instant
-        "Event " + newtimeline.story[x].title.$text, //text
-        "Description for Event " + newtimeline.story[x].teaser.$text //description
-	);
-	eventSource.add(evt);
-	}
 	
 }
 
