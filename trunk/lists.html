@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html lang="en">
+<head>
+<title>SIMILE Timeline of Stories from NPR</title>
+
+<script language="javascript" TYPE="text/javascript">
+window.station="KJZZ_FM";
+window.localize=true;
+</script>
+
+<script src="/scripts/jsonStringify.js" type="text/javascript"></script>
+
+<script language="javascript" TYPE="text/javascript">
+
+function onLoad(obj) {
+	// alert(JSONstring.make(obj.value.items[0].item[0].title));
+	alert(obj.value.items[0].item[0].title);
+}
+</script>
+
+
+<script type="text/javascript">
+function addOption(selectbox,text,value )
+{
+	var optn = document.createElement("OPTION");
+	optn.text = text;
+	optn.value = value;
+	selectbox.options.add(optn);
+}
+
+
+function addOption_list(selectbox){
+
+var month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+for (var i=0; i < month.length;++i){
+
+addOption(document.drop_list.Month_list, month[i], month[i]);
+}
+}
+
+
+
+</script>
+
+</head>
+<body onLoad="addOption_list()";>
+
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=onLoad" type="text/javascript"></script>
+
+<!-- 
+Music Genres:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=60b51fe750f31ba1f92f7b9105b49818&_render=json&_callback=onLoad" type="text/javascript"></script>
+
+Music Artists:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=476d2ea2826d41dd8dafea61f6a1949a&_render=json&_callback=onLoad" type="text/javascript"></script>
+
+Bios:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=e62f5b60fdba7db1ca3d6f37e8f6b565&_render=json&_callback=onLoad" type="text/javascript"></script>
+
+Programs:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=1bfd5bad898149176d829f4bd3a522b5&_render=json&_callback=onLoad" type="text/javascript"></script>
+
+Topics:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=onLoad" type="text/javascript"></script>
+
+-->
+
+<FORM name="drop_list" action="yourpage.php" method="POST" >
+<SELECT NAME="Month_list">
+<Option value="" >Month list</option>
+</SELECT>
+</form>
+</form>
+
+<table>
+<tr id="dID1">
+<td>info here 1</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -42,7 +42,7 @@ function onLoad(newjsondata) {
 	var eventSource = new Timeline.DefaultEventSource();
 
 /*
-	// from example here: http://blog.jeromeparadis.com/archive/2007/06/28/SIMILE-Timeline-Manually-Adding-Events.aspx
+	// from example here: 
 	//Generate 50 random events up to 20 days in the past or the future
 	for(var i=0;i<50;i++) {
 	var dateEvent = new Date();
@@ -100,7 +100,7 @@ function onLoad(newjsondata) {
         trackGap:       0.2,
         width:          "70%",
         intervalUnit:   Timeline.DateTime.WEEK,
-        intervalPixels: 50,
+        intervalPixels: 100,
         eventSource: eventSource
     }),
     Timeline.createBandInfo({
@@ -144,7 +144,7 @@ function ws_results(obj) {
 <!-- 
 <body onload="onLoad();" onresize="onResize();" >
 -->
-<h1 style="text-transform: capitalize;">Timeline</h1>
+<h1 style="text-transform: capitalize;">Timeline of Stories from NPR</h1>
 
 
 <div id="body">
