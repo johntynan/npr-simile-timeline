@@ -63,15 +63,6 @@ function onLoad(newjsondata) {
 	// for (x = 0; x < entries.count ; x++){
 	for (x = 0; x < 3 ; x++){
 		// alert(x);
-		// alert(newjsondata.list.count);
-		// var buildstring = (newjsondata.list.story[x]);
-		// var buildstring = (newjsondata.list.story[x].link);
-		// var buildstring = (entries.story[x].link[0].$text);
-		// var buildstring = (entries.story[x].title.$text);
-		// var buildstring = (entries.story[x].storyDate.$text);
-		var buildstring = (entries.story[x].teaser.$text);
-		// alert(JSONstring.make(buildstring));
-		buildstring = null;
 		nprico = "http://npr.org/favicon.ico"
 		color = "green"
 		
@@ -88,13 +79,17 @@ function onLoad(newjsondata) {
 		nprico, // icon
 		color // color
 		);
-		alert(JSONstring.make(evt));
+		// alert(JSONstring.make(evt));
+
 		// end new code
+	eventSource.add(evt);
 
-
-      eventSource.add(evt);
   }
-  //create the timeline
+
+pausecomp(1000);
+alert(JSONstring.make(eventSource));
+
+//create the timeline
   var bandInfos = [
     Timeline.createBandInfo({
         trackGap:       0.2,
