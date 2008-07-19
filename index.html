@@ -57,7 +57,11 @@ function onLoad(newjsondata) {
 		"Description for Event " + i //description
 		);
 
-*/      
+*/
+
+		nprico = "http://npr.org/favicon.ico"
+		color = "green"
+/*
       // start new code
       	var x;
 	// for (x = 0; x < entries.count ; x++){
@@ -72,9 +76,21 @@ function onLoad(newjsondata) {
 		entries.story[x].storyDate.$text, //latestStart
 		entries.story[x].storyDate.$text, //earliestEnd
 		true, //instant
+*/
+	// test
+	for(var x=0;x<3;x++) {
+	var dateEvent = new Date();
+	dateEvent.setTime(dateEvent.getTime() + ((Math.floor(Math.random()*41) - 20) * 24 * 60 * 60 * 1000));
+	var evt = new Timeline.DefaultEventSource.Event(
+		dateEvent, //start
+		dateEvent, //end
+		dateEvent, //latestStart
+		dateEvent, //earliestEnd
+		true, //instant
+	
 		entries.story[x].title.$text, //text
 		entries.story[x].teaser.$text, // description
-		nprico, // image
+		'', // nprico, // image
 		entries.story[x].link[0].$text, // link
 		nprico, // icon
 		color // color
