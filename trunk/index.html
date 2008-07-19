@@ -38,7 +38,7 @@ var tl;
 function onLoad(newjsondata) {
 
 	entries = newjsondata.list
-
+	
 	var eventSource = new Timeline.DefaultEventSource();
 
 /*
@@ -59,35 +59,20 @@ function onLoad(newjsondata) {
 
 */
 
-		nprico = "http://npr.org/favicon.ico"
-		color = "green"
-/*
       // start new code
       	var x;
 	// for (x = 0; x < entries.count ; x++){
-	for (x = 0; x < 3 ; x++){
+	for (x = 0; x < 10 ; x++){
 		// alert(x);
 		nprico = "http://npr.org/favicon.ico"
 		color = "green"
-		
+		var dateEvent = new Date();
 		var evt = new Timeline.DefaultEventSource.Event(
-		entries.story[x].storyDate.$text, //start
-		entries.story[x].storyDate.$text, //end
-		entries.story[x].storyDate.$text, //latestStart
-		entries.story[x].storyDate.$text, //earliestEnd
+		Date.parse(entries.story[x].storyDate.$text), //start
+		Date.parse(entries.story[x].storyDate.$text), //end
+		Date.parse(entries.story[x].storyDate.$text), //latestStart
+		Date.parse(entries.story[x].storyDate.$text), //earliestEnd
 		true, //instant
-*/
-	// test
-	for(var x=0;x<3;x++) {
-	var dateEvent = new Date();
-	dateEvent.setTime(dateEvent.getTime() + ((Math.floor(Math.random()*41) - 20) * 24 * 60 * 60 * 1000));
-	var evt = new Timeline.DefaultEventSource.Event(
-		dateEvent, //start
-		dateEvent, //end
-		dateEvent, //latestStart
-		dateEvent, //earliestEnd
-		true, //instant
-	
 		entries.story[x].title.$text, //text
 		entries.story[x].teaser.$text, // description
 		'', // nprico, // image
@@ -103,7 +88,7 @@ function onLoad(newjsondata) {
   }
 
 pausecomp(1000);
-alert(JSONstring.make(eventSource));
+// alert(JSONstring.make(eventSource));
 
 //create the timeline
   var bandInfos = [
@@ -167,10 +152,12 @@ function ws_results(obj) {
 
 <!--
 Query for the election:
-<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=timelineConverter" type="text/javascript"></script>
 -->
+<script src="http://api.npr.org/query?id=1102&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=onLoad" type="text/javascript"></script>
+
 <!--
-query for arts -->
+query for arts 
 <script src="http://api.npr.org/query?id=1008&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=onLoad" type="text/javascript"></script>
+-->
 </body>
 </html>
