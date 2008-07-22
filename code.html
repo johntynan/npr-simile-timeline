@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html lang="en">
+<head>
+<script language="JavaScript">
+function getTopValue(){
+// alert(parent.topFrame.document.urlForm.nprAPIQuerystring.value);
+
+// document.codeForm.headerCode.value = parent.topFrame.document.urlForm.nprAPIQuerystring.value;
+
+	if (parent.topFrame.document.urlForm.nprAPIQuerystring.value == "") {
+	document.codeForm.headerCode.value  = ""
+	} else {
+	// document.codeForm.headerCode.value = parent.topFrame.document.urlForm.nprAPIQuerystring.value;
+
+	headerLine1 = "\<script src=\"http://simile.mit.edu/timeline/api/timeline-api.js\" type=\"text/javascript\"\>\<\/script\>"
+	headerLine2 = "<script src=\"\/scripts\/timeline\/nprtimeline.js\" type=\"text\/javascript\">\<\/script\>";
+	// document.codeForm.headerCode.value = headerLine1;
+	// headerCode =  headerLine1 + "\r" + parent.topFrame.document.urlForm.nprAPIQuerystring.value;
+	headerCode =  headerLine1 + "\r" + headerLine2;
+	document.codeForm.headerCode.value = headerCode;
+        }
+	
+	if (parent.topFrame.document.urlForm.timelineHeight.value == "") {
+	bodyLine1 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"height: 300px\;\"\>"
+	bodyCode = bodyLine1;
+	document.codeForm.bodyCode.value  = bodyCode;
+	} else {
+	// document.codeForm.bodyCode.value = parent.topFrame.document.urlForm.timelineHeight.value;
+	// bodyCode = parent.topFrame.document.urlForm.timelineHeight.value;
+	// document.codeForm.bodyCode.value = bodyCode;
+	bodyLine1 = "\<body  onresize=\"onResize\(\)\;\" \>";
+	bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"height: " + parent.topFrame.document.urlForm.timelineHeight.value + "px\;\"\>";
+	bodyLine3 = "\<script src=\""+ parent.topFrame.document.urlForm.nprAPIQuerystring.value + "\&callback\=onLoad\" type=\"text\/javascript\"\>\<\/script\>";
+	// callback=onLoad \
+
+	bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
+	document.codeForm.bodyCode.value  = bodyCode
+	}
+	
+}
+</script>
+</head>
+<body onLoad="getTopValue();">
+<form name="codeForm">
+<h1>Your NPR / Timeline Widget Code</h1>
+<h2>Header Code</h2>
+<textarea id="headerCode" rows="10" cols="50"></textarea>
+<h2>Body Code</h2>
+<textarea id="bodyCode" rows="10" cols="50"></textarea>
+</form>
+</body>
+</html>

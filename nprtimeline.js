@@ -1,22 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en">
-<head>
-<title>SIMILE Timeline of Stories from NPR</title>
-
-<script language="javascript" TYPE="text/javascript">
-window.station="KJZZ_FM";
-window.localize=true;
-</script>
-
-<script src="http://simile.mit.edu/timeline/api/timeline-api.js" type="text/javascript"></script>
-
-<script src="/scripts/jsonStringify.js" type="text/javascript"></script>
-
-<script src="/scripts/json2.js" type="text/javascript"></script>
-
-<script language="javascript" TYPE="text/javascript">
-
-
 // pause script to pause computer
 // http://www.sean.co.uk/a/webdesign/javascriptdelay.shtm
 function pausecomp(millis)
@@ -28,10 +9,6 @@ do { curDate = new Date(); }
 while(curDate-date < millis);
 } 
 
-
-</script>
-
-<script language="javascript" TYPE="text/javascript">
 // from the simile cubism tutorial
 // http://simile.mit.edu/timeline/examples/cubism/cubism.html
 var tl;
@@ -124,40 +101,7 @@ function onResize() {
         }, 500);
     }
 }
-</script>
-
-<script language="javascript" TYPE="text/javascript">
 
 function ws_results(obj) {
 	// alert(obj.list.title.$text);
 }
-</script>
-
-
-
-</head>
-<body  onresize="onResize();" >
-<!-- 
-<body onload="onLoad();" onresize="onResize();" >
--->
-<h1 style="text-transform: capitalize;">Timeline of Stories from NPR</h1>
-
-
-<div id="body">
-
-    <div id="my-timeline" class="timeline-default" style="height: 300px;">
-    </div>
-    
-</div>
-
-<!--
-Query for the john mccain on AIDS:
--->
-<script src="http://api.npr.org/query?id=1118&searchTerm=AIDS&output=JSON&numResults=20&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=onLoad" type="text/javascript"></script>
-
-<!--
-query for arts 
-<script src="http://api.npr.org/query?id=1008&fields=title,teaser,storyDate,audio,image,summary&action=Or&output=JSON&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&callback=onLoad" type="text/javascript"></script>
--->
-</body>
-</html>
