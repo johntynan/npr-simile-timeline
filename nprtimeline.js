@@ -81,7 +81,7 @@ pausecomp(1000);
         trackHeight:    0.5,
         trackGap:       0.2,
         width:          "30%",
-        intervalUnit:   Timeline.DateTime.YEAR,
+        intervalUnit:   Timeline.DateTime.MONTH,
         intervalPixels: 150,
         eventSource: eventSource
     })

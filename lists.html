@@ -13,30 +13,47 @@ window.localize=true;
 
 <script language="javascript" TYPE="text/javascript">
 
+
+listSource = new Array();
+
 function onLoad(obj) {
+	// alert(JSONstring.make(obj.value.items[0]));
 	// alert(JSONstring.make(obj.value.items[0].item[0].title));
-	alert(obj.value.items[0].item[0].title);
+	// alert(obj.value.items[0].item[0].title);
+	for (x = 0; x < 70; x++){
+	// for (x = 0; x < obj.value.items[0].length; x++){
+		listSource [x]=new Array(2)
+		// alert(x);
+		/*
+		var entry = (obj.value.items[0].item[x].id,
+		obj.value.items[0].item[x].title);
+		listSource[x]=(entry);
+		*/
+		// alert(JSONstring.make(obj.value.items[0].item[x].id));
+		listSource[x][0]= (obj.value.items[0].item[x].id);
+		listSource[x][1]= (obj.value.items[0].item[x].title);
+		// addOption(document.selectionForm.topicList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	}
+
+// alert(listSource[5]);
+
+addOption_list(listSource)
+
 }
-</script>
 
-
-<script type="text/javascript">
-function addOption(selectbox,text,value )
+function addOption(selectbox,value,text)
 {
 	var optn = document.createElement("OPTION");
-	optn.text = text;
 	optn.value = value;
+	optn.text = text;
 	selectbox.options.add(optn);
 }
 
-
-function addOption_list(selectbox){
-
-var month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-for (var i=0; i < month.length;++i){
-
-addOption(document.drop_list.Month_list, month[i], month[i]);
-}
+function addOption_list(listSource){
+	// alert(listSource);
+	for (var i=0; i < listSource.length;++i){
+	addOption(document.selectionForm.topicList, listSource[i][0], listSource[i][1]);
+	}
 }
 
 
@@ -44,9 +61,19 @@ addOption(document.drop_list.Month_list, month[i], month[i]);
 </script>
 
 </head>
-<body onLoad="addOption_list()";>
 
-<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=onLoad" type="text/javascript"></script>
+<!-- 
+<body onLoad="addOption_list()";> -->
+<body>
+
+<FORM name="selectionForm" target="bottomFrame">
+<!-- Select a Topic: <SELECT NAME="topicList" onchange="javascript:top.window.bottomFrame.location.reload()"> -->
+Select a Topic: <SELECT NAME="topicList" onchange="javascript:top.window.bottomFrame.location.href='timeline.php?id=' + this.options[this.selectedIndex].value;">
+<Option value="">Topics</option>
+</SELECT>
+</form>
+</form>
+
 
 <!-- 
 Music Genres:
@@ -66,18 +93,7 @@ Topics:
 
 -->
 
-<FORM name="drop_list" action="yourpage.php" method="POST" >
-<SELECT NAME="Month_list">
-<Option value="" >Month list</option>
-</SELECT>
-</form>
-</form>
-
-<table>
-<tr id="dID1">
-<td>info here 1</td>
-</tr>
-</table>
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=onLoad" type="text/javascript"></script>
 
 </body>
 </html>
