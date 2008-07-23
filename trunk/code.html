@@ -14,7 +14,7 @@ function getTopValue(){
 	// document.codeForm.headerCode.value = parent.topFrame.document.urlForm.nprAPIQuerystring.value;
 
 	headerLine1 = "\<script src=\"http://simile.mit.edu/timeline/api/timeline-api.js\" type=\"text/javascript\"\>\<\/script\>"
-	headerLine2 = "<script src=\"\/scripts\/timeline\/nprtimeline.js\" type=\"text\/javascript\">\<\/script\>";
+	headerLine2 = "<script src=\"http://johntynan.com\/scripts\/timeline\/nprtimeline.js\" type=\"text\/javascript\">\<\/script\>";
 	// document.codeForm.headerCode.value = headerLine1;
 	// headerCode =  headerLine1 + "\r" + parent.topFrame.document.urlForm.nprAPIQuerystring.value;
 	headerCode =  headerLine1 + "\r" + headerLine2;
@@ -31,7 +31,8 @@ function getTopValue(){
 	// document.codeForm.bodyCode.value = bodyCode;
 	bodyLine1 = "\<body  onresize=\"onResize\(\)\;\" \>";
 	bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"height: " + parent.topFrame.document.urlForm.timelineHeight.value + "px\;\"\>";
-	bodyLine3 = "\<script src=\""+ parent.topFrame.document.urlForm.nprAPIQuerystring.value + "\&callback\=onLoad\" type=\"text\/javascript\"\>\<\/script\>";
+	// bodyLine3 = "\<script src=\""+ parent.topFrame.document.urlForm.nprAPIQuerystring.value + "\&callback\=onLoad\" type=\"text\/javascript\"\>\<\/script\>";
+	bodyLine3 = "\<script src=\""+ parent.topFrame.document.urlForm.nprAPIQuerystring.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=onLoad\" type=\"text\/javascript\"\>\<\/script\>";
 	// callback=onLoad \
 
 	bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;

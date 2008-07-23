@@ -2,20 +2,67 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <html lang="en">
 <head>
+<script language="javascript" TYPE="text/javascript">
+
+listSource = new Array();
+
+function onLoad(obj) {
+	// alert(JSONstring.make(obj.value.items[0]));
+	// alert(JSONstring.make(obj.value.items[0].item[0].title));
+	// alert(obj.value.items[0].item[0].title);
+	for (x = 0; x < 70; x++){
+	// for (x = 0; x < obj.value.items[0].length; x++){
+		listSource [x]=new Array(2)
+		// alert(x);
+		/*
+		var entry = (obj.value.items[0].item[x].id,
+		obj.value.items[0].item[x].title);
+		listSource[x]=(entry);
+		*/
+		// alert(JSONstring.make(obj.value.items[0].item[x].id));
+		listSource[x][0]= (obj.value.items[0].item[x].id);
+		listSource[x][1]= (obj.value.items[0].item[x].title);
+		// addOption(document.selectionForm.topicList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	}
+
+// alert(listSource[5]);
+
+addOption_list(listSource)
+
+}
+
+function addOption(selectbox,value,text)
+{
+	var optn = document.createElement("OPTION");
+	optn.value = value;
+	optn.text = text;
+	selectbox.options.add(optn);
+}
+
+function addOption_list(listSource){
+	// alert(listSource);
+	for (var i=0; i < listSource.length;++i){
+	addOption(document.urlForm.topicList, listSource[i][0], listSource[i][1]);
+	}
+}
+
+</script>
 </head>
 <body>
 <h1>How to Use the Timeline Widget Generator</h1>
 <form name="urlForm" target="bottomFrame">
 <ol>
-	<li>Go to the API section at NPR.org and "Create an API Call" using the <a href="http://www.npr.org/api/queryGenerator.php" target="_blank">Query Generator</a></li>
-	<li>Cut and paste your the url for your query here: 
-	<input type="text" id="nprAPIQuerystring" value=""></li>
+	<!-- <li>Go to the API section at NPR.org and "Create an API Call" using the <a href="http://www.npr.org/api/queryGenerator.php" target="_blank">Query Generator</a></li> -->
+	<li>Select your topic here: <SELECT NAME="topicList" onchange="document.urlForm.nprAPIQuerystring.value  = 'http://api.npr.org/query?id=' + this.options[this.selectedIndex].value;"> <!-- alert(document.urlForm.nprAPIQuerystring.value); -->
+		<Option value="">Topics</option>
+	</SELECT>
+	<input type="hidden" id="nprAPIQuerystring" value=""></li>
 	<li>Type the height for your timelinehere: 
 	<input type="text" id="timelineHeight" value=""></li>
-	<li>Click submit<br>
-	<input type="button" value="Submit" onclick="javascript:top.window.bottomFrame.location.reload()"></li>
+	<li>Click: <input type="button" value="Submit" onclick="javascript:top.window.bottomFrame.location.reload()"></li>
 	<li>Copy and paste the resulting code onto your web site.</li>
 </ol>
 </form>
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=onLoad" type="text/javascript"></script>
 </body>
 </html>
