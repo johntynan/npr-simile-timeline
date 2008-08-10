@@ -16,6 +16,9 @@ function onLoad(newjsondata) {
 
 	entries = newjsondata.list
 	
+	// alert(JSONstring.make(entries));
+	// alert(Jentries);
+	
 	var eventSource = new Timeline.DefaultEventSource();
 
 /*
