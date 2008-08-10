@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html lang="en">
+<head>
+<title>Portable Query Generator</title>
+
+<script src="/scripts/jsonStringify.js" type="text/javascript"></script>
+
+<script language="javascript" TYPE="text/javascript">
+
+// listSource = new Array();
+
+function getTopicsList(obj) {
+
+listSource = new Array();
+/*
+This function gets a list of topics from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
+Next, this sends the contents of the listSource array to the createTopicsList function
+*/
+
+	// alert(JSONstring.make(obj.value.items[0]));
+	// alert(JSONstring.make(obj.value.items[0].item[0].title));
+	// alert(obj.value.items[0].item[0].title);
+	// alert (obj.value.items[0].count);
+	var x;
+	var stuff = obj.value.items[0];
+	// alert(stuff);
+	// for (x = 0; x < obj.count ; x++) {
+	// for (x = 0; x < stuff.count ; x++) {
+	for (x = 0; x < 70; x++){
+	// for (x = 0; x < obj.value.items[0].length; x++){
+		listSource [x]=new Array(2)
+		// alert(JSONstring.make(obj.value.items[0].item[x].id));
+		listSource[x][0]= (obj.value.items[0].item[x].id);
+		listSource[x][1]= (obj.value.items[0].item[x].title);
+		// addOption(document.selectionForm.topicsList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	}
+
+// alert(listSource[5]);
+
+createTopicsList(listSource)
+
+}
+
+function getProgramsList(obj) {
+listSource = new Array();
+/*
+This function gets a list of programs from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
+Next, this sends the contents of the listSource array to the createProgramsList function
+*/
+
+	// alert(JSONstring.make(obj.value.items[0]));
+	// alert(JSONstring.make(obj.value.items[0].item[0].title));
+	// alert(obj.value.items[0].item[0].title);
+	for (x = 0; x < 12; x++){
+	// for (x = 0; x < obj.value.items[0].length; x++){
+		listSource [x]=new Array(2)
+		// alert(JSONstring.make(obj.value.items[0].item[x].id));
+		listSource[x][0]= (obj.value.items[0].item[x].id);
+		listSource[x][1]= (obj.value.items[0].item[x].title);
+		// addOption(document.selectionForm.topicsList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	}
+
+// alert(listSource[5]);
+
+createProgramstList(listSource)
+
+}
+
+function getSeriesList(obj) {
+/*
+This function gets a list of series from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
+Next, this sends the contents of the listSource array to the createSeriesList function
+*/
+
+	// alert(JSONstring.make(obj.value.items[0]));
+	// alert(JSONstring.make(obj.value.items[0].item[0].title));
+	// alert(obj.value.items[0].item[0].title);
+/*
+	for (x = 0; x < 25; x++){
+	// for (x = 0; x < obj.value.items[0].length; x++){
+		listSource [x]=new Array(2)
+		// alert(JSONstring.make(obj.value.subcategory[0]));
+		listSource[x][0]= (obj.value.subcategory[0].item[x].id);
+		listSource[x][1]= (obj.value.subcategory[0].item[x].title);
+		// addOption(document.selectionForm.topicsList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	}
+
+// alert(listSource[5]);
+
+createSeriesList(listSource)
+*/
+}
+
+function getColumnsList(obj) {
+/*
+This function gets a list of series from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
+Next, this sends the contents of the listSource array to the createColumnsList function
+*/
+
+	// alert(JSONstring.make(obj.value.items[0]));
+	// alert(JSONstring.make(obj.value.items[0].item[0].title));
+	// alert(obj.value.items[0].item[0].title);
+/*
+	for (x = 0; x < 25; x++){
+	// for (x = 0; x < obj.value.items[0].length; x++){
+		listSource [x]=new Array(2)
+		// alert(JSONstring.make(obj.value.items[0].item[x].id));
+		listSource[x][0]= (obj.value.subcategory[0].item[x].id);
+		listSource[x][1]= (obj.value.subcategory[0].item[x].title);
+		// addOption(document.selectionForm.topicsList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	}
+
+// alert(listSource[5]);
+
+createColumnsList(listSource)
+*/
+
+}
+
+function createTopicsList(listSource){
+	// alert(listSource);
+	for (var i=0; i < listSource.length;++i){
+	addOption(document.selectionForm.topicsList, listSource[i][0], listSource[i][1]);
+	}
+}
+
+function createProgramstList(programSource){
+	// alert(listSource);
+	for (var i=0; i < programSource.length;++i){
+	addOption(document.selectionForm.programsList, programSource[i][0], programSource[i][1]);
+	}
+}
+
+function createSeriesList(listSource){
+	// alert(listSource);
+	for (var i=0; i < listSource.length;++i){
+	addOption(document.selectionForm.seriesList, listSource[i][0], listSource[i][1]);
+	}
+}
+
+function createColumnsList(listSource){
+	// alert(listSource);
+	for (var i=0; i < listSource.length;++i){
+	addOption(document.selectionForm.columnsList, listSource[i][0], listSource[i][1]);
+	}
+}
+
+function addOption(selectbox,value,text) {
+	var optn = document.createElement("OPTION");
+	optn.value = value;
+	optn.text = text;
+	selectbox.options.add(optn);
+}
+
+function getSelectedTopics(obj) {
+
+// http://www.digitalamit.com/blog/blog/23.html
+// while (obj.selectedIndex != -1) { if (obj.selectedIndex != 0) arSelected.push(obj.options[obj.selectedIndex].value); obj.options[obj.selectedIndex].selected = false; } 
+selected = new Array(); 
+for (var i = 0; i < obj.options.length; i++) 
+	if (obj.options[ i ].selected)
+	selected.push(obj.options[ i ].value);
+
+document.selectionForm.selectedTopics.value = selected
+
+createQueryString();
+
+}
+
+function getSelectedPrograms(obj) {
+
+selected = new Array(); 
+for (var i = 0; i < obj.options.length; i++) 
+	if (obj.options[ i ].selected)
+	selected.push(obj.options[ i ].value);
+
+document.selectionForm.selectedPrograms.value = selected
+
+createQueryString();
+
+}
+
+function createQueryString(){
+
+// alert(document.selectionForm.selectedTopics.value);
+// alert(document.selectionForm.selectedSubjects.value);
+
+//  document.selectionForm.programsList.options[document.selectionForm.programssList.selectedIndex].value 
+// document.selectionForm.queryBox.value = document.selectionForm.topicsList.options[document.selectionForm.topicsList.selectedIndex].value
+
+
+// top.window.bottomFrame.location.href='timeline.php?id=
+// http://api.npr.org/query?id=4467346,90476534,1059,2&searchTerm=John%20Edwards&output=JSON&apiKey=demo
+
+// document.selectionForm.newURL.value ='timeline_new.php?apicall=\"' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad' + '\"'
+
+// document.selectionForm.newURL.value ='timeline_new.php?apicall=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
+
+document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + document.selectionForm.selectedTopics.value + ',' +  document.selectionForm.selectedPrograms.value + '&searchTerm=' + escape(document.selectionForm.searchTerm.value);
+
+document.selectionForm.newURL.value ='timeline_new.php?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
+
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<FORM name="selectionForm" target="bottomFrame"> <!-- javascript:top.window.bottomFrame.location.href='timeline.php?id=' + -->
+<div style="float:left">
+<!-- <SELECT NAME="topicsList" multiple size="3" onchange="javascript:createQueryString();"> -->
+<SELECT NAME="topicsList" multiple size="4" onblur="getSelectedTopics(document.selectionForm.topicsList);">
+<Option value="">Topics</option>
+</SELECT> 
+<input type="hidden" id="selectedTopics">
+</div>
+<!-- javascript:top.window.bottomFrame.location.href='timeline.php?id=' + -->
+<!-- document.selectionForm.queryBox.value = this.options[this.selectedIndex].value -->
+<!-- createQueryString(this.options[this.selectedIndex].value) -->
+<!-- <SELECT NAME="programsList"multiple size="3" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);"> -->
+<div style="float:left">
+<SELECT NAME="programsList"multiple size="4" onblur="getSelectedPrograms(document.selectionForm.programsList);">
+<Option value="">Programs</option>
+</SELECT>
+<input type="hidden" id="selectedPrograms">
+</div>
+<!--
+<SELECT NAME="seriesList" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);">
+<Option value="">Series</option>
+</SELECT>
+<SELECT NAME="columnsList" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);">
+<Option value="">Columns</option>
+</SELECT> -->
+<div style="float:left; position: relative; top:5px;">
+Search Term:<br>
+<input type="text" name="searchTerm" id="searchTerm" onchange="createQueryString();">
+</div>
+
+<div style="float:left; position: relative; top:15px;">
+<input type="hidden" id="queryBox" name="queryBox">
+<input type="hidden" id="newURL" name="newURL">
+<!-- <input type="button" onClick="javascript:top.window.bottomFrame.location.href='timeline.php?apicall=' + document.selectionForm.queryBox.value" value="Submit">  -->
+<input type="button" onClick="javascript:top.window.bottomFrame.location.href=document.selectionForm.newURL.value" value="Submit">
+</div> <!-- alert(document.selectionForm.newURL.value); -->
+</form>
+
+
+<!-- Topics: -->
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=getTopicsList" type="text/javascript"></script>
+ 
+<!-- Programs: -->
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=1bfd5bad898149176d829f4bd3a522b5&_render=json&_callback=getProgramsList" type="text/javascript"></script>
+
+<!-- Series: -->
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=20cb092ac0b2683a2097dc1dc378ae51&_render=json&_callback=getSeriesList" type="text/javascript"></script>
+
+<!-- Columns: -->
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=c35059519ddbd54d6e38c864b0f8fffb&_render=json&_callback=getColumnsList" type="text/javascript"></script>
+
+
+<!-- Bios:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=e62f5b60fdba7db1ca3d6f37e8f6b565&_render=json&_callback=getBiosList" type="text/javascript"></script> -->
+
+<!-- Music Genres:
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=60b51fe750f31ba1f92f7b9105b49818&_render=json&_callback=getMusicList" type="text/javascript"></script> -->
+
+<!-- Music Artists: 
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=476d2ea2826d41dd8dafea61f6a1949a&_render=json&_callback=getArtistsList" type="text/javascript"></script> -->
+
+
+
+
+</body>
+</html>
