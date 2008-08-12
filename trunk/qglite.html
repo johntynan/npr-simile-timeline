@@ -23,12 +23,7 @@ Next, this sends the contents of the listSource array to the createTopicsList fu
 	// alert(obj.value.items[0].item[0].title);
 	// alert (obj.value.items[0].count);
 	var x;
-	var stuff = obj.value.items[0];
-	// alert(stuff);
-	// for (x = 0; x < obj.count ; x++) {
-	// for (x = 0; x < stuff.count ; x++) {
-	for (x = 0; x < 70; x++){
-	// for (x = 0; x < obj.value.items[0].length; x++){
+	for (x = 0; x < obj.value.items[0].item.length; x++){
 		listSource [x]=new Array(2)
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
 		listSource[x][0]= (obj.value.items[0].item[x].id);
@@ -52,8 +47,7 @@ Next, this sends the contents of the listSource array to the createProgramsList 
 	// alert(JSONstring.make(obj.value.items[0]));
 	// alert(JSONstring.make(obj.value.items[0].item[0].title));
 	// alert(obj.value.items[0].item[0].title);
-	for (x = 0; x < 12; x++){
-	// for (x = 0; x < obj.value.items[0].length; x++){
+	for (x = 0; x < obj.value.items[0].item.length; x++){
 		listSource [x]=new Array(2)
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
 		listSource[x][0]= (obj.value.items[0].item[x].id);
@@ -183,24 +177,7 @@ createQueryString();
 
 function createQueryString(){
 
-// alert(document.selectionForm.selectedTopics.value);
-// alert(document.selectionForm.selectedSubjects.value);
-
-//  document.selectionForm.programsList.options[document.selectionForm.programssList.selectedIndex].value 
-// document.selectionForm.queryBox.value = document.selectionForm.topicsList.options[document.selectionForm.topicsList.selectedIndex].value
-
-
-// top.window.bottomFrame.location.href='timeline.php?id=
-// http://api.npr.org/query?id=4467346,90476534,1059,2&searchTerm=John%20Edwards&output=JSON&apiKey=demo
-
-// document.selectionForm.newURL.value ='timeline_new.php?apicall=\"' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad' + '\"'
-
-// document.selectionForm.newURL.value ='timeline_new.php?apicall=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
-
-document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + document.selectionForm.selectedTopics.value + ',' +  document.selectionForm.selectedPrograms.value + '&searchTerm=' + escape(document.selectionForm.searchTerm.value);
-
-document.selectionForm.newURL.value ='timeline_new.php?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
-
+document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
 
 }
 
@@ -210,18 +187,13 @@ document.selectionForm.newURL.value ='timeline_new.php?id=' + document.selection
 
 <body>
 
-<FORM name="selectionForm" target="bottomFrame"> <!-- javascript:top.window.bottomFrame.location.href='timeline.php?id=' + -->
+<FORM name="selectionForm" target="bottomFrame">
 <div style="float:left">
-<!-- <SELECT NAME="topicsList" multiple size="3" onchange="javascript:createQueryString();"> -->
 <SELECT NAME="topicsList" multiple size="4" onblur="getSelectedTopics(document.selectionForm.topicsList);">
 <Option value="">Topics</option>
 </SELECT> 
 <input type="hidden" id="selectedTopics">
 </div>
-<!-- javascript:top.window.bottomFrame.location.href='timeline.php?id=' + -->
-<!-- document.selectionForm.queryBox.value = this.options[this.selectedIndex].value -->
-<!-- createQueryString(this.options[this.selectedIndex].value) -->
-<!-- <SELECT NAME="programsList"multiple size="3" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);"> -->
 <div style="float:left">
 <SELECT NAME="programsList"multiple size="4" onblur="getSelectedPrograms(document.selectionForm.programsList);">
 <Option value="">Programs</option>
@@ -243,9 +215,8 @@ Search Term:<br>
 <div style="float:left; position: relative; top:15px;">
 <input type="hidden" id="queryBox" name="queryBox">
 <input type="hidden" id="newURL" name="newURL">
-<!-- <input type="button" onClick="javascript:top.window.bottomFrame.location.href='timeline.php?apicall=' + document.selectionForm.queryBox.value" value="Submit">  -->
 <input type="button" onClick="javascript:top.window.bottomFrame.location.href=document.selectionForm.newURL.value" value="Submit">
-</div> <!-- alert(document.selectionForm.newURL.value); -->
+</div> 
 </form>
 
 
