@@ -1,0 +1,8 @@
+.my-timeline.timeline-message-container {
+    font-size:      20%;
+}
+.my-timeline.timeline-message {
+    font-size:      20%;
+    font-weight:    bold;
+    text-align:     center;
+}
