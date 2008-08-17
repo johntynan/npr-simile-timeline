@@ -4,8 +4,18 @@
 <head>
 <title>Portable Query Generator</title>
 
+<!-- begin css / js for scal -->
+<link href="scal.css" rel="stylesheet" type="text/css" />
+<!-- <link href="demo.css" rel="stylesheet" type="text/css" /> -->
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="scriptaculous.js?load=builder,effects,dragdrop"></script>
+<script type="text/javascript" src="scal.js"></script>
+<!-- end css / js for scal -->
+
+<!-- for testing -->
 <script src="/scripts/jsonStringify.js" type="text/javascript"></script>
 
+<!-- begin js to build selction lists and query string/url -->
 <script language="javascript" TYPE="text/javascript">
 
 // listSource = new Array();
@@ -194,36 +204,166 @@ function createQueryString(){
 
 // document.selectionForm.newURL.value ='timeline_new.php?apicall=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
 
-document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + document.selectionForm.selectedTopics.value + ',' +  document.selectionForm.selectedPrograms.value + '&searchTerm=' + escape(document.selectionForm.searchTerm.value);
+document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + document.selectionForm.selectedTopics.value + ','  +  document.selectionForm.selectedPrograms.value  + '&searchTerm=' + escape(document.selectionForm.searchTerm.value)  + '&startNum=' + escape(document.selectionForm.startNum.value) + '&numResults=' + document.selectionForm.numResults.value + '&date=' + document.selectionForm.pDate.value + '&startDate=' + document.selectionForm.pSDate.value + '&endDate=' + document.selectionForm.pEDate.value;
 
-document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad'
+// alert(document.selectionForm.queryBox.value);
 
+document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad';
 
+// alert(document.selectionForm.newURL.value);
 }
 
 </script>
+<!-- end javascript for query string/url -->
+
+<!-- begin additional javascript for scal -->
+    <script type="text/javascript">
+    // the following javascript was taken from the jscal demo:
+    // 
+    
+    //Extend the scal library to add draggable calendar support.
+    //This script block can be added to the scal.js file.
+    Object.extend(scal.prototype,
+    {
+        toggleCalendar: function()
+        {
+            var element = $(this.options.wrapper) || this.element;
+            this.options[element.visible() ? 'onclose' : 'onopen'](element);
+            this.options[element.visible() ? 'closeeffect' : 'openeffect'](element, {duration: 0.5});
+        },
+
+        isOpen: function()
+        { 
+            return ( $(this.options.wrapper) || this.element).visible();
+        }
+    });
+    
+    //this is a global variable to have only one instance of the calendar
+    var calendar = null;
+    
+    //@element   => is the <div> where the calender will be rendered by Scal.
+    //@input     => is the <input> where the date will be updated.
+    //@container => is the <div> for dragging.
+    //@source    => is the img/button which raises up the calender, the script will locate the calenar over this control.
+    function showCalendar(element, input, container, source)            
+    {
+        if (!calendar)
+        {
+            container = $(container);
+            //the Draggable handle is hard coded to "rtop" to avoid other parameter.
+            new Draggable(container, {handle: "rtop", starteffect: Prototype.emptyFunction, endeffect: Prototype.emptyFunction});
+            
+            //The singleton calendar is created.
+            calendar = new scal(element, $(input), 
+            {
+                updateformat: 'mm/dd/yyyy', 
+                closebutton: '&nbsp;', 
+                wrapper: container
+            }); 
+        }
+        else
+        {
+            calendar.updateelement = $(input);
+        }
+
+        var date = new Date($F(input));
+        calendar.setCurrentDate(isNaN(date) ? new Date() : date);
+        
+        //Locates the calendar over the calling control  (in this example the "img").
+        if (source = $(source))
+        {
+            Position.clone($(source), container, {setWidth: false, setHeight: false, offsetLeft: source.getWidth() + 2});
+        }
+        
+        //finally show the calendar =)
+        calendar.openCalendar();
+    };
+    
+    </script>
+    
+    <script type="text/javascript">
+    var imgCalendar_Click = function(e, input)
+    {
+        showCalendar("calendar", input, "calendar-container", Event.element(e));
+    };
+    
+    Event.observe(window, "load", function(e)
+    {
+        Event.observe("imgDate", "click", imgCalendar_Click.bindAsEventListener(this, "pDate"));
+	Event.observe("imgSDate", "click", imgCalendar_Click.bindAsEventListener(this, "pSDate"));
+        Event.observe("imgEDate", "click", imgCalendar_Click.bindAsEventListener(this, "pEDate"));
+
+    });    
+    </script>
+<!-- end additional javascript for scal -->
 
 </head>
 
 <body>
 
-<FORM name="selectionForm" target="bottomFrame"> <!-- javascript:top.window.bottomFrame.location.href='timeline.php?id=' + -->
+<FORM name="selectionForm" target="bottomFrame">
+
+<div id="calendar-container" style="width:221px; position:absolute; display:none; float:left;">
+	    <b class="rtop">
+            <b class="r1"></b> <b class="r2"></b> <b class="r3"></b> <b class="r4"></b>
+        </b>
+        <div class="floating" id="calendar"></div>
+</div>
+<fieldset style="width:350px;">
+            <legend>Date Range</legend>
+    <label for="pDate">Specific Date:
+    <input type="text" value="" id="pDate" />
+    <img src="calendar.jpg" id="imgDate" />
+    </label>
+    <br />
+    <label for="pSDate">Start Date:
+    <input type="text" value="" id="pSDate" />
+    <img src="calendar.jpg" id="imgSDate" />
+    </label>
+    <br />
+    <label for="pEDate">End Date:
+    <input type="text" value="" id="pEDate" />
+    <img src="calendar.jpg" id="imgEDate" />
+    </label>
+</fieldset>
+<div style="float:left; position: absolute; top: 10px; left: 385px; z-index: 0;">
+<fieldset>
+            <legend>Number of Results</legend>
+            <label for="startNum"><font style="font-weight: bold;">Start Number: </font>
+                <input id="startNum" type="text">
+            </label><br>
+            <label for="numResults"><font style="font-weight: bold;">Number of Results: </font>
+                <select id="numResults" name="numResults">
+                  <option value=" ">default</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+
+            </label>
+        </fieldset>
+</div>
+<br clear="all">
 <div style="float:left">
-<!-- <SELECT NAME="topicsList" multiple size="3" onchange="javascript:createQueryString();"> -->
+<fieldset>
+            <legend>Topics</legend>
 <SELECT NAME="topicsList" multiple size="4" onblur="getSelectedTopics(document.selectionForm.topicsList);">
-<Option value="">Topics</option>
+<Option value=""></option>
 </SELECT> 
 <input type="hidden" id="selectedTopics">
+</fieldset>
 </div>
-<!-- javascript:top.window.bottomFrame.location.href='timeline.php?id=' + -->
-<!-- document.selectionForm.queryBox.value = this.options[this.selectedIndex].value -->
-<!-- createQueryString(this.options[this.selectedIndex].value) -->
-<!-- <SELECT NAME="programsList"multiple size="3" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);"> -->
+
 <div style="float:left">
+<fieldset>
+            <legend>Programs</legend>
+
 <SELECT NAME="programsList"multiple size="4" onblur="getSelectedPrograms(document.selectionForm.programsList);">
-<Option value="">Programs</option>
+<Option value=""></option>
 </SELECT>
 <input type="hidden" id="selectedPrograms">
+</fieldset>
 </div>
 <!--
 <SELECT NAME="seriesList" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);">
@@ -232,17 +372,75 @@ document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectio
 <SELECT NAME="columnsList" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);">
 <Option value="">Columns</option>
 </SELECT> -->
-<div style="float:left; position: relative; top:5px;">
-Search Term:<br>
+
+<div style="float:left;">
+<fieldset>
+            <legend>Search Term</legend>
 <input type="text" name="searchTerm" id="searchTerm" onchange="createQueryString();">
+</fieldset>
 </div>
 
-<div style="float:left; position: relative; top:15px;">
+
+<div style="float:left;">
+<fieldset>
+            <legend>Submit</legend>
+
 <input type="hidden" id="queryBox" name="queryBox">
 <input type="hidden" id="newURL" name="newURL">
-<!-- <input type="button" onClick="javascript:top.window.bottomFrame.location.href='timeline.php?apicall=' + document.selectionForm.queryBox.value" value="Submit">  -->
-<input type="button" onClick="javascript:top.window.bottomFrame.location.href=document.selectionForm.newURL.value" value="Submit">
-</div> <!-- alert(document.selectionForm.newURL.value); -->
+<input type="button" onClick="top.window.bottomFrame.location.href=document.selectionForm.newURL.value" value="Submit">
+</submit>
+</div>
+
+<!-- 
+code from calendar demo:
+
+    <div id="calendar-container" style="width:221px; position:relative; display:none; float:left;">
+        <b class="rtop">
+            <b class="r1"></b> <b class="r2"></b> <b class="r3"></b> <b class="r4"></b>
+        </b>
+        <div class="floating" id="calendar"></div>
+    </div>
+
+    <br /><br /><br />
+    <input type="text" value="" id="startDate" />
+    <img src="../calendar.jpg" id="imgStartDate" />
+    <br />
+    
+    <input type="text" value="" id="endDate" />
+    <img src="../calendar.jpg" id="imgEndDate" />
+    <br />
+    
+    <br />
+-->
+
+<!-- 
+code from NPR api page:
+
+    <div style="margin: 15px 0pt 0pt 15px; float: left; width: 315px;">
+        <fieldset>
+        <legend>Dates and Date Ranges</legend>
+
+        <label for="pDate">Specific Date:
+        <input value="" id="date" type="text">
+        <img src="../calendar.jpg" id="imgDate">
+        </label>
+        <br><br>
+        <hr>
+        <br>
+        <label for="pSDate">Start Date:
+        <input value="" id="startDate" type="text">
+        <img src="../calendar.jpg" id="imgSDate">
+
+        </label><br>
+        <label for="pEDate">End Date:
+        <input value="" id="endDate" type="text">
+        <img src="../calendar.jpg" id="imgEDate">
+        </label>
+        <br>
+        </fieldset>
+    </div>
+    
+-->
 
 </form>
 
