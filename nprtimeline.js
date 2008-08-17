@@ -16,8 +16,7 @@ function onLoad(newjsondata) {
 
 	entries = newjsondata.list
 	
-	// alert(JSONstring.make(entries));
-	// alert(Jentries);
+	//alert(JSONstring.make(entries));
 	
 	var eventSource = new Timeline.DefaultEventSource();
 
@@ -41,8 +40,12 @@ function onLoad(newjsondata) {
 
       // start new code
       	var x;
-	// for (x = 0; x < entries.count ; x++){
-	for (x = 0; x < 10; x++){
+
+	var objCount=0;
+	for(_obj in entries.story) objCount++;
+	// alert(objCount);
+	
+	for (x = 0; x < objCount; x++){
 		// alert(x);
 		nprico = "http://npr.org/favicon.ico"
 		color = "green"
