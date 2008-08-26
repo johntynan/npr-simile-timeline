@@ -2,8 +2,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <html lang="en">
 <title>Dynamic Timeline Example</title>
-<frameset rows="60%,*" cols="*" frameborder="1">
-  <frame src ="qglite.html" name="topFrame" marginwidth="0" marginheight="0" scrolling="auto"  frameborder="1"/>
-  <frame src ="timeline_new.html?apicall=http://api.npr.org/query?id=1032,1019&searchTerm=Social%20Media&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=onLoad" name="bottomFrame" marginwidth="0" marginheight="0" scrolling="auto" frameborder="1"/> -->
+
+<frameset cols="20%,*" frameborder="0" border="0" framespacing="0">
+	<frame src ="form_new.html" name="generatorFrame" marginwidth="0" marginheight="0" scrolling="auto"  frameborder="1"/>
+<frameset rows="50%,*" frameborder="0" border="0" framespacing="0">
+	<frame src ="qglite.html" name="qgliteFrame" marginwidth="0" marginheight="0" scrolling="auto"  frameborder="1"/>
+	<frame src ="timeline_new.html?apicall=http://api.npr.org/query?id=1032,1019&searchTerm=Social%20Media&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=parseJSON" name="timelineFrame" marginwidth="0" marginheight="0" scrolling="auto" frameborder="1"/>
 </frameset>
+<noframes>
+</noframes>
+</frameset>
+
 </html>

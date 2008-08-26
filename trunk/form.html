@@ -6,7 +6,7 @@
 
 listSource = new Array();
 
-function onLoad(obj) {
+function parseJSON(obj) {
 	// alert(JSONstring.make(obj.value.items[0]));
 	// alert(JSONstring.make(obj.value.items[0].item[0].title));
 	// alert(obj.value.items[0].item[0].title);
@@ -63,6 +63,6 @@ function addOption_list(listSource){
 	<li>Copy and paste the resulting code onto your web site.</li>
 </ol>
 </form>
-<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=onLoad" type="text/javascript"></script>
+<script src="http://pipes.yahoo.com/pipes/pipe.run?_id=2cf390d2699b3a5b6db04d245c412143&_render=json&_callback=parseJSON" type="text/javascript"></script>
 </body>
 </html>
