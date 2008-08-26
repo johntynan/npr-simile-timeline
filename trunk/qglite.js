@@ -248,7 +248,7 @@ document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + selecte
 
 // alert(document.selectionForm.queryBox.value);
 
-document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=onLoad';
+document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=parseJSON';
 
 // alert(document.selectionForm.newURL.value);
 }
