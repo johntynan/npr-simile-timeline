@@ -23,7 +23,7 @@
 
 <body>
 
-<FORM name="selectionForm" target="bottomFrame">
+<FORM name="selectionForm" target="timelineFrame">
 <div id="numberOfResults" style=" float:left; width:221px;">
 <fieldset>
             <legend>Number of Results</legend>
@@ -104,11 +104,11 @@
 
 <div style="float:left;">
 <fieldset>
-            <legend>Submit</legend>
+            <legend>Create Timeline</legend>
 
 <input type="hidden" id="queryBox" name="queryBox">
 <input type="hidden" id="newURL" name="newURL">
-<input type="button" onClick="top.window.bottomFrame.location.href=document.selectionForm.newURL.value;" value="Submit">
+<input type="button" onClick="top.window.timelineFrame.location.href=document.selectionForm.newURL.value;" value="Create Timeline">
 </submit>
 </div>
 </form>

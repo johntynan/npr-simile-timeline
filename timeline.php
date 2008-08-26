@@ -16,14 +16,14 @@ document.write('<sc'+'ript');
 document.write(' type="text/javascript"');
 document.write(' language="JavaScript"');
 document.write(' src="http://api.npr.org/query');
-document.write('?id='+ parent.topFrame.document.selectionForm.topicList.value +'&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=onLoad">');
+document.write('?id='+ parent.topFrame.document.selectionForm.topicList.value +'&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=parseJSON">');
 document.write('</sc'+'ript>');
-// alert(' src="http://api.npr.org/query' + '?id='+ parent.topFrame.document.selectionForm.topicList.value +'&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=onLoad">');
+// alert(' src="http://api.npr.org/query' + '?id='+ parent.topFrame.document.selectionForm.topicList.value +'&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=parseJSON">');
 */
 </script>
 
 
 
-<?php $id = $_GET['id']; echo("<script src=\"http://api.npr.org/query?id={$id}&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=onLoad\" type=\"text/javascript\"></script>");?>
+<?php $id = $_GET['id']; echo("<script src=\"http://api.npr.org/query?id={$id}&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004&output=JSON&callback=parseJSON\" type=\"text/javascript\"></script>");?>
 </body>
 </html>

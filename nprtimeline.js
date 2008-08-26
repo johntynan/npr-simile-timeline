@@ -12,31 +12,13 @@ while(curDate-date < millis);
 // from the simile cubism tutorial
 // http://simile.mit.edu/timeline/examples/cubism/cubism.html
 var tl;
-function onLoad(newjsondata) {
+function parseJSON(newjsondata) {
 
 	entries = newjsondata.list
 	
 	//alert(JSONstring.make(entries));
 	
 	var eventSource = new Timeline.DefaultEventSource();
-
-/*
-	// from example here: 
-	//Generate 50 random events up to 20 days in the past or the future
-	for(var i=0;i<50;i++) {
-	var dateEvent = new Date();
-	dateEvent.setTime(dateEvent.getTime() + ((Math.floor(Math.random()*41) - 20) * 24 * 60 * 60 * 1000));
-	var evt = new Timeline.DefaultEventSource.Event(
-		dateEvent, //start
-		dateEvent, //end
-		dateEvent, //latestStart
-		dateEvent, //earliestEnd
-		true, //instant
-		"Event " + i, //text
-		"Description for Event " + i //description
-		);
-
-*/
 
       // start new code
       	var x;
