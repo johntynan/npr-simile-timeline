@@ -33,7 +33,7 @@ function getTopValue(){
 	bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"height: " + parent.topFrame.document.urlForm.timelineHeight.value + "px\;\"\>";
 	// bodyLine3 = "\<script src=\""+ parent.topFrame.document.urlForm.nprAPIQuerystring.value + "\&callback\=onLoad\" type=\"text\/javascript\"\>\<\/script\>";
 	bodyLine3 = "\<script src=\""+ parent.topFrame.document.urlForm.nprAPIQuerystring.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" type=\"text\/javascript\"\>\<\/script\>";
-	// callback=onLoad \
+	// callback=parseJSON \
 
 	bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
 	document.codeForm.bodyCode.value  = bodyCode

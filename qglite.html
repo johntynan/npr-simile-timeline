@@ -7,8 +7,18 @@
 <!-- begin css / js for scal -->
 <link href="scal.css" rel="stylesheet" type="text/css" />
 <!-- <link href="demo.css" rel="stylesheet" type="text/css" /> -->
-<script type="text/javascript" src="prototype.js"></script>
-<script type="text/javascript" src="scriptaculous.js?load=builder,effects,dragdrop"></script>
+
+<!-- <script type="text/javascript" src="prototype.js"></script> -->
+<!-- <script type="text/javascript" src="scriptaculous.js?load=builder,effects,dragdrop"></script> -->
+
+<!-- load common javascript libraries from google -->
+<!-- thanks to http://groups.google.com/group/Google-AJAX-Search-API/browse_thread/thread/fd887a8439bf635a -->
+<script src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+        google.load("prototype", "1.6.0.2");
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.1/scriptaculous.js?load=builder,effects,dragdrop"></script> 
+
 <script type="text/javascript" src="scal.js"></script>
 <!-- end css / js for scal -->
 
@@ -101,16 +111,15 @@
 </fieldset>
 </div>
 
-
-<div style="float:left;">
-<fieldset>
-            <legend>Create Timeline</legend>
-
 <input type="hidden" id="queryBox" name="queryBox">
 <input type="hidden" id="newURL" name="newURL">
-<input type="button" onClick="top.window.timelineFrame.location.href=document.selectionForm.newURL.value;" value="Create Timeline">
-</submit>
-</div>
+
+<!-- <div style="float:left;">
+<fieldset>
+            <legend>Create Timeline</legend>
+	<input type="button" onClick="top.window.timelineFrame.location.href=document.selectionForm.newURL.value;" value="Create Timeline">
+</div> -->
+
 </form>
 
 

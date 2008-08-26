@@ -7,7 +7,7 @@
 </script>
 </head>
 <body>
-<h1>NPR Timeline</h1>
+<h1>NPR Timeline (Beta)</h1>
 <form name="generatorForm" target="timelineFrame">
 <input type="hidden" id="nprAPIQuerystring" value="">
 <ol>
@@ -26,11 +26,17 @@
 	</select></li> -->
 
 	<!-- <li><select name="f" id="f" onfocus="help(3);"><option value="arial">Arial</option><option value="georgia">Georgia</option><option value="helvetica">Helvetica</option><option value="tahoma">Tahoma</option><option value="verdana">Verdana</option></select></li> -->
-	<li>Click: <input type="button" value="Preview" onclick="javascript:top.window.timelineFrame.location.reload()"></li>
+	<li>Click: <!-- <input type="button" value="Preview" onclick="javascript:top.window.timelineFrame.location.reload()"> -->
+	<input type="button" onClick="top.window.timelineFrame.location.href=parent.qgliteFrame.document.selectionForm.newURL.value;document.getElementById('viewURL').innerHTML ='Your Query of the NPR API: ' + parent.qgliteFrame.document.selectionForm.queryBox.value;" value="Preview">
+
+	</li>
 	<li>If you like what you see<br>
 	<li>Click: <input type="button" value="Get Code" onclick="javascript:top.window.timelineFrame.location.href='code_new.html'"></li></li>
 	<li>Copy and paste the resulting code onto your web site.</li>
 </ol>
+<div id="viewURL" style="font-size:x-small;">
+<!-- parent.qgliteFrame.document.selectionForm.queryBox.value; -->
+</div>
 </form>
 </body>
 </html>
