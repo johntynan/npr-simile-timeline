@@ -3,9 +3,9 @@
 <head>
 <title>SIMILE Timeline of Stories from NPR</title>
 
-<link href="http://johntynan.com/scripts/timeline/timeline.css" rel="stylesheet" type="text/css" />
+<link href="http://npr-simile-timeline.googlecode.com/svn/trunk/timeline.css" rel="stylesheet" type="text/css" />
 <script src="http://simile.mit.edu/timeline/api/timeline-api.js" type="text/javascript"></script>
-<script src="http://johntynan.com/scripts/timeline/nprtimeline.js" type="text/javascript"></script><!-- http://johntynan.com/scripts/timeline/ -->
+<script src="http://npr-simile-timeline.googlecode.com/svn/trunk/nprtimeline.js" type="text/javascript"></script><!-- http://npr-simile-timeline.googlecode.com/svn/trunk/ -->
 <script  type="text/javascript">
 function pausecomp(millis)
 {
@@ -34,7 +34,7 @@ if (parent.parent.generatorFrame.document.generatorForm.timelineWidth.value == "
 	widthString="height: " + parent.parent.generatorFrame.document.generatorForm.timelineWidth.value + "px\;\"";
 }
 	
-// bodyLine1 = "\<body  onresize=\"onResize\(\)\;\" \>";
+// bodyLine1 = "\<body onresize=\"onResize\(\)\;\" \>";
 bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"" + heightString  + widthString + "\>"
 bodyLine3 = "\<script src=\""+ parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" type=\"text\/javascript\"\>\<\/script\>";
 // bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
