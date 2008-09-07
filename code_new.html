@@ -26,7 +26,10 @@ bodyLine1 = "\<body  onresize=\"onResize\(\)\;\" \>";
 bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"" + heightString  + widthString + "\>"
 bodyLine3 = "\<script src=\""+ parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" type=\"text\/javascript\"\>\<\/script\>";
 // bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
-bodyCode = bodyLine2 + "\r" + bodyLine3;
+// why was bodyLine1 omitted here?
+// bodyCode = bodyLine2 + "\r" + bodyLine3;
+bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
+
 document.codeForm.bodyCode.value  = bodyCode
 	
 }

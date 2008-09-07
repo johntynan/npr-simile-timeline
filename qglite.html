@@ -6,10 +6,6 @@
 
 <!-- begin css / js for scal -->
 <link href="http://npr-simile-timeline.googlecode.com/svn/trunk/scal.css" rel="stylesheet" type="text/css" />
-<!-- <link href="demo.css" rel="stylesheet" type="text/css" /> -->
-
-<!-- <script type="text/javascript" src="prototype.js"></script> -->
-<!-- <script type="text/javascript" src="scriptaculous.js?load=builder,effects,dragdrop"></script> -->
 
 <!-- load common javascript libraries from google -->
 <!-- thanks to http://groups.google.com/group/Google-AJAX-Search-API/browse_thread/thread/fd887a8439bf635a -->
@@ -26,8 +22,8 @@
 <!-- end additional javascript for scal -->
 <script src="http://npr-simile-timeline.googlecode.com/svn/trunk/qglite.js" type="text/javascript"></script>
 
-<!-- for testing: commented out until I can remember the url that Daniel /Harold sent of this compressed javascript file at NPR.org -->
-<!-- <script src="/scripts/jsonStringify.js" type="text/javascript"></script> -->
+<!-- for testing: commented out for production use
+<script src="../jsonStringify.js" type="text/javascript"></script>  -->
 
 </head>
 
@@ -90,19 +86,33 @@
 <fieldset>
             <legend>Programs</legend>
 
-<SELECT NAME="programsList"multiple size="4" onblur="getSelectedPrograms(document.selectionForm.programsList);">
+<SELECT NAME="programsList" multiple size="4" onblur="getSelectedPrograms(document.selectionForm.programsList);">
 <Option value=""></option>
 </SELECT>
 <input type="hidden" id="selectedPrograms">
 </fieldset>
 </div>
-<!--
-<SELECT NAME="seriesList" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);">
-<Option value="">Series</option>
+
+<div style="float:left">
+<fieldset>
+            <legend>Series</legend>
+<SELECT NAME="seriesList" multiple size="4" onblur="getSelectedSeries(document.selectionForm.seriesList);">
+<Option value=""></option>
 </SELECT>
-<SELECT NAME="columnsList" onchange="javascript:createQueryString(this.options[this.selectedIndex].value);">
-<Option value="">Columns</option>
-</SELECT> -->
+<input type="hidden" id="selectedSeries">
+</fieldset>
+</div>
+<!-- 
+<div style="float:left">
+<fieldset>
+            <legend>Columns</legend>
+<SELECT NAME="columnsList" multiple size="4" onblur="getSelectedColumns(document.selectionForm.columnsList);">
+<Option value=""></option>
+</SELECT>
+
+</fieldset>
+</div> -->
+<input type="hidden" id="selectedColumns">
 
 <div style="float:left;">
 <fieldset>
@@ -113,12 +123,6 @@
 
 <input type="hidden" id="queryBox" name="queryBox">
 <input type="hidden" id="newURL" name="newURL">
-
-<!-- <div style="float:left;">
-<fieldset>
-            <legend>Create Timeline</legend>
-	<input type="button" onClick="top.window.timelineFrame.location.href=document.selectionForm.newURL.value;" value="Create Timeline">
-</div> -->
 
 </form>
 

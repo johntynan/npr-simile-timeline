@@ -10,8 +10,7 @@ Next, this sends the contents of the listSource array to the createTopicsList fu
 	// alert(JSONstring.make(obj.value.items[0].item[0].title));
 	// alert(obj.value.items[0].item[0].title);
 	// alert (obj.value.items[0].count);
-	var x;
-	// for (x = 0; x < 70; x++){
+	
 	for (x = 0; x < obj.value.items[0].item.length; x++){
 	
 		listSource [x]=new Array(2)
@@ -37,7 +36,7 @@ Next, this sends the contents of the listSource array to the createProgramsList 
 	// alert(JSONstring.make(obj.value.items[0]));
 	// alert(JSONstring.make(obj.value.items[0].item[0].title));
 	// alert(obj.value.items[0].item[0].title);
-	// for (x = 0; x < 12; x++){
+	
 	for (x = 0; x < obj.value.items[0].item.length; x++){
 		listSource [x]=new Array(2)
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
@@ -53,53 +52,74 @@ createProgramstList(listSource)
 }
 
 function getSeriesList(obj) {
+listSource = new Array();
 /*
 This function gets a list of series from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
 Next, this sends the contents of the listSource array to the createSeriesList function
 */
-
 	// alert(JSONstring.make(obj.value.items[0]));
-	// alert(JSONstring.make(obj.value.items[0].item[0].title));
-	// alert(obj.value.items[0].item[0].title);
-/*
-	for (x = 0; x < 25; x++){
-	// for (x = 0; x < obj.value.items[0].length; x++){
-		listSource [x]=new Array(2)
-		// alert(JSONstring.make(obj.value.subcategory[0]));
-		listSource[x][0]= (obj.value.subcategory[0].item[x].id);
-		listSource[x][1]= (obj.value.subcategory[0].item[x].title);
-		// addOption(document.selectionForm.topicsList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0]));
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].id));
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].title));
+	// alert(JSONstring.make(obj.value.items[0].subcategory.length));
+	groupLength = obj.value.items[0].subcategory.length
+	// alert(groupLength);
+	
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item.length));
+	for (x = 0; x < groupLength; x++){
+		// alert(JSONstring.make(obj.value.items[0].subcategory[x].item));
+		subGroupLength = obj.value.items[0].subcategory[x].item.length
+		// alert(subGroupLength);
+		if ((subGroupLength ==0) || (subGroupLength ==null)) {
+			}else{
+			for (y = 0; y < subGroupLength; y++){
+				listSource [y]=new Array(2)
+				listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
+				listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
+			}
+		}
 	}
-
-// alert(listSource[5]);
-
+// alert(listSource[0]);
+// alert(listSource[groupLength]);
 createSeriesList(listSource)
-*/
+
 }
 
 function getColumnsList(obj) {
+listSource = new Array();
 /*
 This function gets a list of series from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
 Next, this sends the contents of the listSource array to the createColumnsList function
 */
-
 	// alert(JSONstring.make(obj.value.items[0]));
-	// alert(JSONstring.make(obj.value.items[0].item[0].title));
-	// alert(obj.value.items[0].item[0].title);
-/*
-	for (x = 0; x < 25; x++){
-	// for (x = 0; x < obj.value.items[0].length; x++){
-		listSource [x]=new Array(2)
-		// alert(JSONstring.make(obj.value.items[0].item[x].id));
-		listSource[x][0]= (obj.value.subcategory[0].item[x].id);
-		listSource[x][1]= (obj.value.subcategory[0].item[x].title);
-		// addOption(document.selectionForm.topicsList, obj.value.items[0].item[x].id, obj.value.items[0].item[x].title);
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0]));
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].id));
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].title));
+	// alert(JSONstring.make(obj.value.items[0].subcategory.length));
+	groupLength = obj.value.items[0].subcategory.length
+	// groupLength = groupLength - 1
+	// alert(groupLength);
+	
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item.length));
+	for (x = 0; x < groupLength; x++){
+		// alert(JSONstring.make(obj.value.items[0].subcategory[x].item));
+		subGroupLength = ""
+		// subGroupLength = obj.value.items[0].subcategory[x].item.length
+		// alert(subGroupLength);
+		if ((subGroupLength ==null) || (subGroupLength ==undefined)) {
+			}else{
+			for (y = 0; y < subGroupLength; y++){
+				// alert(subGroupLength);
+				// listSource [y]=new Array(2)
+				// listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
+				// listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
+				
+			}
+		}
 	}
-
-// alert(listSource[5]);
-
-createColumnsList(listSource)
-*/
+// alert(listSource[0]);
+// alert(listSource[groupLength]);
+// createColumnsList(listSource)
 
 }
 
@@ -166,6 +186,33 @@ createQueryString();
 
 }
 
+function getSelectedSeries(obj) {
+
+selected = new Array(); 
+for (var i = 0; i < obj.options.length; i++) 
+	if (obj.options[ i ].selected)
+	selected.push(obj.options[ i ].value);
+
+document.selectionForm.selectedSeries.value = selected
+
+createQueryString();
+
+}
+
+function getSelectedColumns(obj) {
+
+selected = new Array(); 
+for (var i = 0; i < obj.options.length; i++) 
+	if (obj.options[ i ].selected)
+	selected.push(obj.options[ i ].value);
+
+document.selectionForm.selectedColumns.value = selected
+
+createQueryString();
+
+}
+
+
 function createQueryString(){
 
 // alert(document.selectionForm.selectedTopics.value);
@@ -182,6 +229,14 @@ if ((document.selectionForm.selectedTopics.value.length==0) || ( document.select
        {
        selectedTopicsString = document.selectionForm.selectedTopics.value
        }
+	else if ((document.selectionForm.selectedSeries.value.length==0) || ( document.selectionForm.selectedSeries.value==null))
+       {
+       selectedTopicsString = document.selectionForm.selectedTopics.value
+       }
+       else if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null))
+       {
+       selectedTopicsString = document.selectionForm.selectedTopics.value
+       }
        else
        {
        selectedTopicsString = document.selectionForm.selectedTopics.value + ','
@@ -191,8 +246,36 @@ selectedProgramsString = ""
 if ((document.selectionForm.selectedPrograms.value.length==0) || ( document.selectionForm.selectedPrograms.value==null)) {
 	selectedProgramsString = ""
 	}
-       else {
+	else if ((document.selectionForm.selectedSeries.value.length==0) || ( document.selectionForm.selectedSeries.value==null))
+       {
        selectedProgramsString = document.selectionForm.selectedPrograms.value
+       }
+       else if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null))
+       {
+       selectedProgramsString = document.selectionForm.selectedPrograms.value
+       }
+       else {
+       selectedProgramsString = document.selectionForm.selectedPrograms.value  + ','
+       }
+       
+selectedSeriesString = ""
+if ((document.selectionForm.selectedSeries.value.length==0) || ( document.selectionForm.selectedSeries.value==null)) {
+	selectedSeriesString = ""
+       }
+       else if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null))
+       {
+       selectedSeriesString = document.selectionForm.selectedSeries.value
+       }
+       else {
+       selectedSeriesString = document.selectionForm.selectedSeries.value  + ','
+       }
+
+selectedColumnsString = ""
+if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null)) {
+	selectedColumnsString = ""
+       }
+       else {
+       selectedColumnsString = document.selectionForm.selectedColumns.value
        }
 
 searchTermString = ""
