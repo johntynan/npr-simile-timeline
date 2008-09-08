@@ -30,6 +30,12 @@
 <body>
 
 <FORM name="selectionForm" target="timelineFrame">
+<div style="float:left;">
+<fieldset>
+            <legend>Search Term</legend>
+<input type="text" name="searchTerm" id="searchTerm" onchange="createQueryString();">
+</fieldset>
+</div>
 <div id="numberOfResults" style=" float:left; width:221px;">
 <fieldset>
             <legend>Number of Results</legend>
@@ -71,6 +77,8 @@
     <img src="calendar.jpg" id="imgEDate" />
     </label>
 </fieldset>
+
+
 <br clear="all">
 <div style="float:left">
 <fieldset>
@@ -113,13 +121,6 @@
 </fieldset>
 </div> -->
 <input type="hidden" id="selectedColumns">
-
-<div style="float:left;">
-<fieldset>
-            <legend>Search Term</legend>
-<input type="text" name="searchTerm" id="searchTerm" onchange="createQueryString();">
-</fieldset>
-</div>
 
 <input type="hidden" id="queryBox" name="queryBox">
 <input type="hidden" id="newURL" name="newURL">
