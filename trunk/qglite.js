@@ -229,14 +229,15 @@ if ((document.selectionForm.selectedTopics.value.length == 0) || ( document.sele
        {
        selectedTopicsString = document.selectionForm.selectedTopics.value + ','
        }
+	else if ((document.selectionForm.selectedColumns.value.length =! 0) || ( document.selectionForm.selectedColumns.value =! null))
+       {
+       selectedTopicsString = document.selectionForm.selectedTopics.value + ','
+       }
        else
        {
        selectedTopicsString = document.selectionForm.selectedTopics.value
        }
-       /* else if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null))
-       {
-       selectedTopicsString = document.selectionForm.selectedTopics.value
-       } */
+
 
 selectedProgramsString = ""
 if ((document.selectionForm.selectedPrograms.value.length == 0) || ( document.selectionForm.selectedPrograms.value == null)) {
@@ -246,29 +247,27 @@ if ((document.selectionForm.selectedPrograms.value.length == 0) || ( document.se
        {
        selectedProgramsString = document.selectionForm.selectedPrograms.value + ','
        }
+       else if ((document.selectionForm.selectedColumns.value.length =! 0) || ( document.selectionForm.selectedColumns.value =! null))
+       {
+       selectedProgramsString = document.selectionForm.selectedPrograms.value + ','
+       }
        else {
        selectedProgramsString = document.selectionForm.selectedPrograms.value
-
        }
        
-	/* else if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null))
-       {
-       selectedProgramsString = document.selectionForm.selectedPrograms.value
-       } */
+	
        
 selectedSeriesString = ""
 if ((document.selectionForm.selectedSeries.value.length==0) || ( document.selectionForm.selectedSeries.value==null)) {
 	selectedSeriesString = ""
        }
+       else if ((document.selectionForm.selectedColumns.value.length =! 0) || ( document.selectionForm.selectedColumns.value =! null))
+       {
+       selectedSeriesString = document.selectionForm.selectedSeries.value  + ','
+       }
        else {
        selectedSeriesString = document.selectionForm.selectedSeries.value
        }
-	// selectedSeriesString = document.selectionForm.selectedSeries.value  + ','
-       /* else if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null))
-       {
-       selectedSeriesString = document.selectionForm.selectedSeries.value
-       } */
-
 
 selectedColumnsString = ""
 if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null)) {
@@ -326,7 +325,7 @@ if ((document.selectionForm.pEDate.value.length==0) || ( document.selectionForm.
        pEDateString = '&endDate=' + document.selectionForm.pEDate.value;
        }
 
-document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
+document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + selectedColumnsString + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
 
 
 // alert(document.selectionForm.queryBox.value);
