@@ -93,35 +93,29 @@ Next, this sends the contents of the listSource array to the createColumnsList f
 */
 	// alert(JSONstring.make(obj.value.items[0]));
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0]));
-	// alert(JSONstring.make(obj.value.items[0].subcategory[0].name));
-	// alert(JSONstring.make(obj.value.items[0].subcategory[0]['item']));
-	// alert(JSONstring.make(obj.value.items[0].subcategory[0]['item']['title']));
-	// alert(JSONstring.make(obj.value.items[0].subcategory[0]['item']['id']));
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].id));
+	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].title));
 	// alert(JSONstring.make(obj.value.items[0].subcategory.length));
 	groupLength = obj.value.items[0].subcategory.length
-	groupLength = groupLength - 1
 	// alert(groupLength);
 	
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item.length));
 	for (x = 0; x < groupLength; x++){
-		// alert(x);
+		// alert(JSONstring.make(obj.value.items[0].subcategory[x].item));
 		subGroupLength = obj.value.items[0].subcategory[x].item.length
 		// alert(subGroupLength);
-		// alert(JSONstring.make(obj.value.items[0].subcategory[x]['item']['title']));
-		if ((subGroupLength ==null) || (subGroupLength ==undefined)) {
+		if ((subGroupLength ==0) || (subGroupLength ==null)) {
 			}else{
 			for (y = 0; y < subGroupLength; y++){
-				// alert(subGroupLength);
-				// listSource [y]=new Array(2)
-				// listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
-				// listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
-				
+				listSource [y]=new Array(2)
+				listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
+				listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
 			}
 		}
 	}
 // alert(listSource[0]);
 // alert(listSource[groupLength]);
-// createColumnsList(listSource)
+createColumnsList(listSource)
 
 }
 

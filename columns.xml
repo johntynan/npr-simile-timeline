@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<list id="3003" typeid="3003">
+  <title>All Columns</title>
+  <subcategory name="Analysis">
+    <item id="4467352" num="1" type="column">
+      <slug/>
+      <title>News Analysis</title>
+      <additionalInfo>Daniel Schorr interprets national and international events as senior news analyst for NPR.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Books">
+    <item id="4467346" num="2" type="column">
+      <slug/>
+      <title>Book Reviews</title>
+      <additionalInfo>Book reviews of the best new fiction and nonfiction books by NPR's Alan Cheuse, Maureen Corrigan, and Karen Grigsby Bates.</additionalInfo>
+    </item>
+    <item id="10448909" num="3" type="column">
+      <slug>Summer Books 2008</slug>
+      <title>Book Tour</title>
+      <additionalInfo>Book Tour is a Web feature and podcast. Each week, we present leading contemporary authors of both fiction and nonfiction as they read from and discuss their current work.</additionalInfo>
+    </item>
+    <item id="91752774" num="4" type="column">
+      <slug>Summer Books 2008</slug>
+      <title>Books We Like</title>
+      <additionalInfo>There are books, and then there are "Books We Like." Each week in Books We Like, our critics review their top picks for new fiction and nonfiction.</additionalInfo>
+    </item>
+    <item id="90796087" num="5" type="column">
+      <slug>Summer Books 2008</slug>
+      <title>Three Books...</title>
+      <additionalInfo>Why three? We live in a three-dimensional world, colored with hues that break down into a trio of primary colors. Our souls (according to Plato) and our psyches (according to Freud) are trilithic. Three is a number that allows for conversation, completion, understanding. And so "Three Books..." invites writers to recommend three great reads on a single theme.</additionalInfo>
+    </item>
+    <item id="5432412" num="6" type="column">
+      <slug>Summer Books 2008</slug>
+      <title>You Must Read This</title>
+      <additionalInfo>Each week "You Must Read This" presents conversations with writers about the books they love to read and recommend.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Commentary">
+    <item id="10617064" num="7" type="column">
+      <slug/>
+      <title>Can I Just Tell You?</title>
+      <additionalInfo>Tell Me More host Michel Martin offers weekly thoughts about current events and what's in the news.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Diversions">
+    <item id="700000" num="8" type="column">
+      <slug/>
+      <title>Driveway Moments</title>
+      <additionalInfo>Listeners' NPR favorites. Riveting stories from Morning Edition, All Things Considered and other award-winning NPR programs.</additionalInfo>
+    </item>
+    <item id="4499275" num="9" type="column">
+      <slug/>
+      <title>Sweetness And Light</title>
+      <additionalInfo>Frank Deford's weekly commentary on sports appears Wednesdays on NPR.org.</additionalInfo>
+    </item>
+    <item id="4465030" num="10" type="column">
+      <slug/>
+      <title>The Unger Report</title>
+      <additionalInfo>Slightly confused but well-meaning "Day to Day" humorist Brian Unger takes on the pressing issues of the moment.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Fun &amp; Games">
+    <item id="4473090" num="12" type="column">
+      <slug/>
+      <title>Sunday Puzzle</title>
+      <additionalInfo>NPR Puzzlemaster Will Shortz presents a weekly puzzle challenge.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Media">
+    <item id="4279852" num="13" type="column">
+      <slug/>
+      <title>Media Circus</title>
+      <additionalInfo>NPR's David Folkenflik's periodic column on the media.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Movies">
+    <item id="4467349" num="14" type="column">
+      <slug/>
+      <title>Movie Reviews</title>
+      <additionalInfo>Reviews of new movies, classic and art films, foreign films, and popular movies. Featuring Bob Mondello, Kenneth Turan, David Edelstein, and Mark Jenkins.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Opinion">
+    <item id="4521890" num="15" type="column">
+      <slug/>
+      <title>Essay</title>
+      <additionalInfo>NPR contributors offer a unique and fresh perspective written exclusively for visitors to NPR.org.</additionalInfo>
+    </item>
+    <item id="1930200" num="16" type="column">
+      <slug/>
+      <title>Reporter's Notebook</title>
+      <additionalInfo>An occasional series of essays for NPR.org written by NPR correspondents and other contributors.</additionalInfo>
+    </item>
+    <item id="4495795" num="17" type="column">
+      <slug/>
+      <title>Simon Says</title>
+      <additionalInfo>"Weekend Edition Saturday" host Scott Simon shares his perspective on news and events both large and small.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Other">
+    <item id="91945906" num="18" type="column">
+      <slug/>
+      <title>Against The Grain</title>
+      <additionalInfo>Dick  Meyer is the editorial director of Digital Media at NPR.org and the author of Why We Hate Us: American Discontent in the New Millennium. His "Against The Grain" column is a mix of sarcastic sociology and comic moral philosophy that occasionally descends into political commentary.</additionalInfo>
+    </item>
+    <item id="14810166" num="19" type="column">
+      <slug/>
+      <title>BackTalk</title>
+      <additionalInfo>BackTalk lifts the curtain on conversations happening on the Tell Me More blog and highlights general feedback to the program.</additionalInfo>
+    </item>
+    <item id="14681732" num="20" type="column">
+      <slug/>
+      <title>Barbershop</title>
+      <additionalInfo>Each week on Tell Me More, the guys in the Barbershop weigh in on the latest happenings in politics, sports and pop culture. The "shop" is moderated by opinion columnist Jimi Izrael.</additionalInfo>
+    </item>
+    <item id="17000763" num="21" type="column">
+      <slug/>
+      <title>Faith Matters</title>
+      <additionalInfo>Each week on Tell Me More, the program explores how matters of faith and spirituality shape the lives of everyday people.</additionalInfo>
+    </item>
+    <item id="17926140" num="22" type="column">
+      <slug/>
+      <title>Mocha Moms</title>
+      <additionalInfo>Each week on Tell Me More, the Mocha Moms discuss diverse parenting styles and the latest news pertaining to children. Hear conversations on children's health, education and cultural awareness.  Mocha Moms is a national network for stay-at-home moms of color.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Politics &amp; Society">
+    <item id="1930201" num="23" type="column">
+      <slug/>
+      <title>Political Junkie</title>
+      <additionalInfo>Ken Rudin's Political Junkie column appears every Wednesday. It includes readers' questions about politics past and present.</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Reviews">
+    <item id="4464232" num="24" type="column">
+      <slug/>
+      <title>On Television</title>
+      <additionalInfo>NPR features regular reviews and coverage of television offerings by Andrew Wallenstein of "Day to Day" and David Bianculli of "Fresh Air."</additionalInfo>
+    </item>
+  </subcategory>
+  <subcategory name="Your Money">
+    <item id="4465062" num="25" type="column">
+      <slug/>
+      <title>The Color of Money</title>
+      <additionalInfo>Personal finance columnist Michelle Singletary and other contributors write this regular feature on factors affecting your money.</additionalInfo>
+    </item>
+  </subcategory>
+</list>
