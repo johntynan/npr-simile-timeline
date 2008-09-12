@@ -36,7 +36,7 @@ if (parent.parent.generatorFrame.document.generatorForm.timelineWidth.value == "
 	
 // bodyLine1 = "\<body onresize=\"onResize\(\)\;\" \>";
 bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"" + heightString  + widthString + "\>"
-bodyLine3 = "\<script src=\""+ parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" type=\"text\/javascript\"\>\<\/script\>";
+bodyLine3 = "\<script src=\""+ 'http://api.npr.org/query?id='  + parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" type=\"text\/javascript\"\>\<\/script\>";
 // bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
 bodyCode = bodyLine2 + "\r" + bodyLine3;
 document.write(bodyCode);
