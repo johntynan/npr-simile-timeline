@@ -24,7 +24,7 @@ if (parent.parent.generatorFrame.document.generatorForm.timelineWidth.value == "
 
 
 
-iframe = "\<iframe src =\"http:\/\/npr-simile-timeline.googlecode.com\/svn\/trunk\/widget.html?" + "http:\/\/api.npr.org\/query\?" + parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\" height=\"" + heightString + " width=\"100\%\" scrolling=\"No\" frameborder=\"0\"\>\<\/iframe\>";
+iframe = "\<iframe src =\"http:\/\/npr-simile-timeline.googlecode.com\/svn\/trunk\/widget.html?" + "http:\/\/api.npr.org\/query\?" + parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" + "\" height=\"" + heightString + " width=\"100\%\" scrolling=\"No\" frameborder=\"0\"\>\<\/iframe\>";
 
 // code =  timelineapi + "\r" + nprtimeline + iframe;
 code =  iframe;
