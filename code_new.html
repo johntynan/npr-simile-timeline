@@ -5,10 +5,9 @@
 <script language="JavaScript">
 function getTopValue(){
 
-headerLine1 = "\<script src=\"http://simile.mit.edu/timeline/api/timeline-api.js\" type=\"text/javascript\"\>\<\/script\>"
-headerLine2 = "<script src=\"http://npr-simile-timeline.googlecode.com\/svn\/trunk\/nprtimeline.js\" type=\"text\/javascript\">\<\/script\>";
-headerCode =  headerLine1 + "\r" + headerLine2;
-document.codeForm.headerCode.value = headerCode;
+// timelineapi = "\<script src=\"http://simile.mit.edu/timeline/api/timeline-api.js\" type=\"text/javascript\"\>\<\/script\>"
+// nprtimeline = "<script src=\"http://npr-simile-timeline.googlecode.com\/svn\/trunk\/nprtimeline.js\" type=\"text\/javascript\">\<\/script\>";
+
 
 if (parent.parent.generatorFrame.document.generatorForm.timelineHeight.value == "") {
 	heightString="height: " + "300" + "px\;";
@@ -21,26 +20,23 @@ if (parent.parent.generatorFrame.document.generatorForm.timelineWidth.value == "
 } else {
 	widthString="height: " + parent.parent.generatorFrame.document.generatorForm.timelineWidth.value + "px\;\"";
 }
-	
-bodyLine1 = "\<body  onresize=\"onResize\(\)\;\" \>";
-bodyLine2 = "\<div id=\"my-timeline\" class=\"timeline-default\" style=\"" + heightString  + widthString + "\>"
-bodyLine3 = "\<script src=\""+ parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON\" type=\"text\/javascript\"\>\<\/script\>";
-// bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
-// why was bodyLine1 omitted here?
-// bodyCode = bodyLine2 + "\r" + bodyLine3;
-bodyCode = bodyLine1 + "\r" + bodyLine2 + "\r" + bodyLine3;
 
-document.codeForm.bodyCode.value  = bodyCode
-	
+
+
+
+iframe = "\<iframe src =\"http:\/\/npr-simile-timeline.googlecode.com\/svn\/trunk\/widget.html?" + "http:\/\/api.npr.org\/query\?" + parent.parent.qgliteFrame.document.selectionForm.queryBox.value + "\" height=\"" + heightString + " width=\"100\%\" scrolling=\"No\" frameborder=\"0\"\>\<\/iframe\>";
+
+// code =  timelineapi + "\r" + nprtimeline + iframe;
+code =  iframe;
+document.codeForm.code.value = code;
+
 }
 </script>
 </head>
 <body onLoad="getTopValue();">
 <form name="codeForm">
-<h2>Header Code</h2>
-<textarea id="headerCode" rows="10" cols="50"></textarea>
-<h2>Body Code</h2>
-<textarea id="bodyCode" rows="10" cols="50"></textarea>
+<h2>Code</h2>
+<textarea id="code" rows="10" cols="50"></textarea>
 </form>
 </body>
 </html>
