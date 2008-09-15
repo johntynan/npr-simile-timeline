@@ -24,8 +24,10 @@ function parseJSON(newjsondata) {
       	var x;
 
 	var objCount=0;
-	for(_obj in entries.story) objCount++;
+	for (_obj in entries.story) {
+		objCount++;
 	// alert(objCount);
+	}
 	
 	for (x = 0; x < objCount; x++){
 		// alert(x);
