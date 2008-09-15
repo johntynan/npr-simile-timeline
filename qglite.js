@@ -1,6 +1,6 @@
 function getTopicsList(obj) {
 
-listSource = new Array();
+listSource = [];
 /*
 This function gets a list of topics from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
 Next, this sends the contents of the listSource array to the createTopicsList function
@@ -13,7 +13,7 @@ Next, this sends the contents of the listSource array to the createTopicsList fu
 	
 	for (x = 0; x < obj.value.items[0].item.length; x++){
 	
-		listSource [x]=new Array(2);
+		listSource [x]= [2];
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
 		listSource[x][0]= (obj.value.items[0].item[x].id);
 		listSource[x][1]= (obj.value.items[0].item[x].title);
@@ -27,7 +27,7 @@ createTopicsList(listSource);
 }
 
 function getProgramsList(obj) {
-listSource = new Array();
+listSource = [];
 /*
 This function gets a list of programs from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
 Next, this sends the contents of the listSource array to the createProgramsList function
@@ -38,7 +38,7 @@ Next, this sends the contents of the listSource array to the createProgramsList 
 	// alert(obj.value.items[0].item[0].title);
 	
 	for (x = 0; x < obj.value.items[0].item.length; x++){
-		listSource [x]=new Array(2);
+		listSource [x]= [2];
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
 		listSource[x][0]= (obj.value.items[0].item[x].id);
 		listSource[x][1]= (obj.value.items[0].item[x].title);
@@ -52,7 +52,7 @@ createProgramstList(listSource);
 }
 
 function getSeriesList(obj) {
-listSource = new Array();
+listSource = [];
 /*
 This function gets a list of series from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
 Next, this sends the contents of the listSource array to the createSeriesList function
@@ -73,7 +73,7 @@ Next, this sends the contents of the listSource array to the createSeriesList fu
 		if ((subGroupLength ==0) || (subGroupLength ==null)) {
 			}else{
 			for (y = 0; y < subGroupLength; y++){
-				listSource [y]=new Array(2);
+				listSource [y]= [2];
 				listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
 				listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
 			}
@@ -86,7 +86,7 @@ createSeriesList(listSource);
 }
 
 function getColumnsList(obj) {
-listSource = new Array();
+listSource = [];
 /*
 This function gets a list of series from the NPR xml feed, in json format (via yahoo pipes), then adds them to the listSource array.
 Next, this sends the contents of the listSource array to the createColumnsList function
@@ -107,7 +107,7 @@ Next, this sends the contents of the listSource array to the createColumnsList f
 		if ((subGroupLength ==0) || (subGroupLength ==null)) {
 			}else{
 			for (y = 0; y < subGroupLength; y++){
-				listSource [y]=new Array(2);
+				listSource [y]= [2];
 				listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
 				listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
 			}
@@ -158,7 +158,7 @@ function getSelectedTopics(obj) {
 
 // http://www.digitalamit.com/blog/blog/23.html
 // while (obj.selectedIndex != -1) { if (obj.selectedIndex != 0) arSelected.push(obj.options[obj.selectedIndex].value); obj.options[obj.selectedIndex].selected = false; } 
-selected = new Array(); 
+selected = []; 
 for (var i = 0; i < obj.options.length; i++) 
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
@@ -171,7 +171,7 @@ createQueryString();
 
 function getSelectedPrograms(obj) {
 
-selected = new Array(); 
+selected = []; 
 for (var i = 0; i < obj.options.length; i++) 
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
@@ -184,7 +184,7 @@ createQueryString();
 
 function getSelectedSeries(obj) {
 
-selected = new Array(); 
+selected = []; 
 for (var i = 0; i < obj.options.length; i++) 
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
@@ -197,7 +197,7 @@ createQueryString();
 
 function getSelectedColumns(obj) {
 
-selected = new Array(); 
+selected = []; 
 for (var i = 0; i < obj.options.length; i++) 
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
@@ -338,9 +338,10 @@ document.selectionForm.newURL.value ='timeline_new.html?id=' + 'http://api.npr.o
 // alert(document.selectionForm.newURL.value);
 }
 
-<!-- end javascript for query string/url -->
+//end javascript for query string/url
 
-<!-- begin additional javascript for scal -->
+// begin additional javascript for scal
+
     // the following javascript was taken from the jscal demo:
     // 
     
