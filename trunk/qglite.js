@@ -13,7 +13,7 @@ Next, this sends the contents of the listSource array to the createTopicsList fu
 	
 	for (x = 0; x < obj.value.items[0].item.length; x++){
 	
-		listSource [x]=new Array(2)
+		listSource [x]=new Array(2);
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
 		listSource[x][0]= (obj.value.items[0].item[x].id);
 		listSource[x][1]= (obj.value.items[0].item[x].title);
@@ -22,7 +22,7 @@ Next, this sends the contents of the listSource array to the createTopicsList fu
 
 // alert(listSource[5]);
 
-createTopicsList(listSource)
+createTopicsList(listSource);
 
 }
 
@@ -38,7 +38,7 @@ Next, this sends the contents of the listSource array to the createProgramsList 
 	// alert(obj.value.items[0].item[0].title);
 	
 	for (x = 0; x < obj.value.items[0].item.length; x++){
-		listSource [x]=new Array(2)
+		listSource [x]=new Array(2);
 		// alert(JSONstring.make(obj.value.items[0].item[x].id));
 		listSource[x][0]= (obj.value.items[0].item[x].id);
 		listSource[x][1]= (obj.value.items[0].item[x].title);
@@ -47,7 +47,7 @@ Next, this sends the contents of the listSource array to the createProgramsList 
 
 // alert(listSource[5]);
 
-createProgramstList(listSource)
+createProgramstList(listSource);
 
 }
 
@@ -62,18 +62,18 @@ Next, this sends the contents of the listSource array to the createSeriesList fu
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].id));
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].title));
 	// alert(JSONstring.make(obj.value.items[0].subcategory.length));
-	groupLength = obj.value.items[0].subcategory.length
+	groupLength = obj.value.items[0].subcategory.length;
 	// alert(groupLength);
 	
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item.length));
 	for (x = 0; x < groupLength; x++){
 		// alert(JSONstring.make(obj.value.items[0].subcategory[x].item));
-		subGroupLength = obj.value.items[0].subcategory[x].item.length
+		subGroupLength = obj.value.items[0].subcategory[x].item.length;
 		// alert(subGroupLength);
 		if ((subGroupLength ==0) || (subGroupLength ==null)) {
 			}else{
 			for (y = 0; y < subGroupLength; y++){
-				listSource [y]=new Array(2)
+				listSource [y]=new Array(2);
 				listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
 				listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
 			}
@@ -81,7 +81,7 @@ Next, this sends the contents of the listSource array to the createSeriesList fu
 	}
 // alert(listSource[0]);
 // alert(listSource[groupLength]);
-createSeriesList(listSource)
+createSeriesList(listSource);
 
 }
 
@@ -96,18 +96,18 @@ Next, this sends the contents of the listSource array to the createColumnsList f
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].id));
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item[0].title));
 	// alert(JSONstring.make(obj.value.items[0].subcategory.length));
-	groupLength = obj.value.items[0].subcategory.length
+	groupLength = obj.value.items[0].subcategory.length;
 	// alert(groupLength);
 	
 	// alert(JSONstring.make(obj.value.items[0].subcategory[0].item.length));
 	for (x = 0; x < groupLength; x++){
 		// alert(JSONstring.make(obj.value.items[0].subcategory[x].item));
-		subGroupLength = obj.value.items[0].subcategory[x].item.length
+		subGroupLength = obj.value.items[0].subcategory[x].item.length;
 		// alert(subGroupLength);
 		if ((subGroupLength ==0) || (subGroupLength ==null)) {
 			}else{
 			for (y = 0; y < subGroupLength; y++){
-				listSource [y]=new Array(2)
+				listSource [y]=new Array(2);
 				listSource[y][0]= (obj.value.items[0].subcategory[x].item[y].id);
 				listSource[y][1]= (obj.value.items[0].subcategory[x].item[y].title);
 			}
@@ -115,7 +115,7 @@ Next, this sends the contents of the listSource array to the createColumnsList f
 	}
 // alert(listSource[0]);
 // alert(listSource[groupLength]);
-createColumnsList(listSource)
+createColumnsList(listSource);
 
 }
 
@@ -163,7 +163,7 @@ for (var i = 0; i < obj.options.length; i++)
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
 
-document.selectionForm.selectedTopics.value = selected
+document.selectionForm.selectedTopics.value = selected;
 
 createQueryString();
 
@@ -176,7 +176,7 @@ for (var i = 0; i < obj.options.length; i++)
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
 
-document.selectionForm.selectedPrograms.value = selected
+document.selectionForm.selectedPrograms.value = selected;
 
 createQueryString();
 
@@ -189,7 +189,7 @@ for (var i = 0; i < obj.options.length; i++)
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
 
-document.selectionForm.selectedSeries.value = selected
+document.selectionForm.selectedSeries.value = selected;
 
 createQueryString();
 
@@ -202,7 +202,7 @@ for (var i = 0; i < obj.options.length; i++)
 	if (obj.options[ i ].selected)
 	selected.push(obj.options[ i ].value);
 
-document.selectionForm.selectedColumns.value = selected
+document.selectionForm.selectedColumns.value = selected;
 
 createQueryString();
 
@@ -217,109 +217,109 @@ function createQueryString(){
 // document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + document.selectionForm.selectedTopics.value + ','  +  document.selectionForm.selectedPrograms.value  + '&searchTerm=' + escape(document.selectionForm.searchTerm.value)  + '&startNum=' + escape(document.selectionForm.startNum.value) + '&numResults=' + document.selectionForm.numResults.value + '&date=' + document.selectionForm.pDate.value + '&startDate=' + document.selectionForm.pSDate.value + '&endDate=' + document.selectionForm.pEDate.value;
 
 
-selectedTopicsString = ""
+selectedTopicsString = "";
 if ((document.selectionForm.selectedTopics.value.length == 0) || ( document.selectionForm.selectedTopics.value == null)) {
-	selectedTopicsString = ""
+	selectedTopicsString = "";
 	}
        else if ((document.selectionForm.selectedPrograms.value.length =! 0) || ( document.selectionForm.selectedPrograms.value =! null))
        {
-       selectedTopicsString = document.selectionForm.selectedTopics.value + ','
+       selectedTopicsString = document.selectionForm.selectedTopics.value + ',';
        }
        else if ((document.selectionForm.selectedSeries.value.length =! 0) || ( document.selectionForm.selectedSeries.value == null))
        {
-       selectedTopicsString = document.selectionForm.selectedTopics.value + ','
+       selectedTopicsString = document.selectionForm.selectedTopics.value + ',';
        }
 	else if ((document.selectionForm.selectedColumns.value.length =! 0) || ( document.selectionForm.selectedColumns.value =! null))
        {
-       selectedTopicsString = document.selectionForm.selectedTopics.value + ','
+       selectedTopicsString = document.selectionForm.selectedTopics.value + ',';
        }
        else
        {
-       selectedTopicsString = document.selectionForm.selectedTopics.value
+       selectedTopicsString = document.selectionForm.selectedTopics.value;
        }
 
 
-selectedProgramsString = ""
+selectedProgramsString = "";
 if ((document.selectionForm.selectedPrograms.value.length == 0) || ( document.selectionForm.selectedPrograms.value == null)) {
-	selectedProgramsString = ""
+	selectedProgramsString = "";
 	}
 	else if ((document.selectionForm.selectedSeries.value.length =! 0) || ( document.selectionForm.selectedSeries.value =! null))
        {
-       selectedProgramsString = document.selectionForm.selectedPrograms.value + ','
+       selectedProgramsString = document.selectionForm.selectedPrograms.value + ',';
        }
        else if ((document.selectionForm.selectedColumns.value.length =! 0) || ( document.selectionForm.selectedColumns.value =! null))
        {
-       selectedProgramsString = document.selectionForm.selectedPrograms.value + ','
+       selectedProgramsString = document.selectionForm.selectedPrograms.value + ',';
        }
        else {
-       selectedProgramsString = document.selectionForm.selectedPrograms.value
+       selectedProgramsString = document.selectionForm.selectedPrograms.value;
        }
        
 	
        
-selectedSeriesString = ""
+selectedSeriesString = "";
 if ((document.selectionForm.selectedSeries.value.length==0) || ( document.selectionForm.selectedSeries.value==null)) {
-	selectedSeriesString = ""
+	selectedSeriesString = "";
        }
        else if ((document.selectionForm.selectedColumns.value.length =! 0) || ( document.selectionForm.selectedColumns.value =! null))
        {
-       selectedSeriesString = document.selectionForm.selectedSeries.value  + ','
+       selectedSeriesString = document.selectionForm.selectedSeries.value  + ',';
        }
        else {
-       selectedSeriesString = document.selectionForm.selectedSeries.value
+       selectedSeriesString = document.selectionForm.selectedSeries.value;
        }
 
-selectedColumnsString = ""
+selectedColumnsString = "";
 if ((document.selectionForm.selectedColumns.value.length==0) || ( document.selectionForm.selectedColumns.value==null)) {
-	selectedColumnsString = ""
+	selectedColumnsString = "";
        }
        else {
-       selectedColumnsString = document.selectionForm.selectedColumns.value
+       selectedColumnsString = document.selectionForm.selectedColumns.value;
        }
 
-searchTermString = ""
+searchTermString = "";
 if ((document.selectionForm.searchTerm.value.length==0) || ( document.selectionForm.searchTerm.value==null)) {
-	searchTermString = ""
+	searchTermString = "";
 	}
        else {
        searchTermString = '&searchTerm=' + escape(document.selectionForm.searchTerm.value);
        }
 
-startNumString = ""
+startNumString = "";
 if ((document.selectionForm.startNum.value.length==0) || ( document.selectionForm.startNum.value==null)) {
-	startNumString = ""
+	startNumString = "";
 	}
        else {
        startNumString = '&startNum=' + escape(document.selectionForm.startNum.value);
        }
  
-numResultsString = ""
+numResultsString = "";
 if ((document.selectionForm.numResults.value.length==0) || ( document.selectionForm.numResults.value==null)) {
-	numResultsString = ""
+	numResultsString = "";
 	}
        else {
        numResultsString = '&numResults=' + document.selectionForm.numResults.value;
        } 
 
-pDateString = ""
+pDateString = "";
 if ((document.selectionForm.pDate.value.length==0) || ( document.selectionForm.pDate.value==null)) {
-	pDateString = ""
+	pDateString = "";
 	}
        else {
        pDateString = '&date=' + document.selectionForm.pDate.value;
        }
 
-pSDateString = ""
+pSDateString = "";
 if ((document.selectionForm.pSDate.value.length==0) || ( document.selectionForm.pSDate.value==null)) {
-	pSDateString = ""
+	pSDateString = "";
 	}
        else {
        pSDateString = '&startDate=' + document.selectionForm.pSDate.value;
        }
 
-pEDateString = ""
+pEDateString = "";
 if ((document.selectionForm.pEDate.value.length==0) || ( document.selectionForm.pEDate.value==null)) {
-	pEDateString = ""
+	pEDateString = "";
 	}
        else {
        pEDateString = '&endDate=' + document.selectionForm.pEDate.value;

@@ -14,7 +14,7 @@ while(curDate-date < millis);
 var tl;
 function parseJSON(newjsondata) {
 
-	entries = newjsondata.list
+	entries = newjsondata.list;
 	
 	//alert(JSONstring.make(entries));
 	
@@ -29,8 +29,8 @@ function parseJSON(newjsondata) {
 	
 	for (x = 0; x < objCount; x++){
 		// alert(x);
-		nprico = "http://npr.org/favicon.ico"
-		color = "green"
+		nprico = "http://npr.org/favicon.ico";
+		color = "green";
 		var dateEvent = new Date();
 		var evt = new Timeline.DefaultEventSource.Event(
 		Date.parse(entries.story[x].storyDate.$text), //start
