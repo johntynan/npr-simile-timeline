@@ -26,6 +26,7 @@ embedString = "Embed Timeline";
 
 document.getElementById('linkToEmbed').innerHTML = embedString;
 document.getElementById('linkToEmbed').href = embedAddress;
+document.getElementById('linkToEmbed').target = "_top";
 
 
 shareAddress = document.location.href;
@@ -36,6 +37,8 @@ shareString = "Link To Timeline";
 
 document.getElementById('linkToShare').innerHTML = shareString;
 document.getElementById('linkToShare').href = shareAddress;
+document.getElementById('linkToShare').target = "_top";
+
 return;
 
 }
@@ -44,7 +47,7 @@ return;
 </head>
 <body onLoad="embedThis();" onresize="onResize();" >
 <div id="my-timeline" class="timeline-default" style="height: 95%;width: 100%;"></div>
-<div id="embedDiv" style="height: 5%;background-color:#DDDDDD;text-align: right;font-size:small;font-family: arial,sans-serif;"><a href="" id="linkToShare"></a> | <a href="" id="linkToEmbed"></a> | <a href="http://npr-simile-timeline.googlecode.com">About the NPR Timeline</a></div>
+<div id="embedDiv" style="height: 5%;background-color:#DDDDDD;text-align: right;font-size:small;font-family: arial,sans-serif;"><a href="" id="linkToShare"></a> | <a href="" id="linkToEmbed"></a> | <a href="http://npr-simile-timeline.googlecode.com" target="_top">About the NPR Timeline</a></div>
 
 
 <script type="text/javascript" language="JavaScript">
