@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<html lang="en">
+<head>
+<title>Embed NPR Timeline</title>
+<script language="JavaScript" type="text/javascript">
+function writeToForm() {
+
+var query = window.location.search;
+query = query.substr(1);
+// alert(query);
+
+widgetAddress = "http:\/\/npr-simile-timeline.googlecode.com\/svn\/trunk\/widget.html?";
+
+/*
+// a whole ton of stuff that doesn't seem necessary, but may actually be useful
+
+queryString = query;
+// alert(queryString);
+
+nprAddress = "http:\/\/api.npr.org\/query?";
+
+apiKey ="\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004";
+
+outputString = "\&output\=JSON";
+
+callbackString = "\&callback\=parseJSON";
+
+urlString = widgetAddress + nprAddress + queryString; + apiKey 
+// alert(urlString);
+
+iframeString = urlString + outputString + callbackString
+// alert(iframeString);
+*/
+
+iframeString = widgetAddress + query;
+
+heightString=" height=\"" + "200" + "px\;";
+
+iframe = "\<iframe src =\"" + iframeString + "\"" + heightString + " width=\"100\%\" scrolling=\"No\" frameborder=\"0\"\>\<\/iframe\>";
+
+document.codeForm.code.value = iframe;
+
+document.getElementById('urlForEmail').innerHTML = iframeString;
+
+}
+</script>
+</head>
+<body onLoad="writeToForm();">
+<h2>Timeline Code</h2>
+<form id="codeForm" name="codeForm">
+<p>Copy the code in the text box below to place a timeline on your blog or web page:</p>
+<textarea id="code" name="code" rows="10" cols="50"></textarea>
+</form>
+<p>You can also use this url alone to link to a timeline, or send a timeline through email:</p>
+<div name="urlForEmail" id="urlForEmail"></div>
+</body>
+</html>

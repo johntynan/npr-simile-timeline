@@ -8,21 +8,43 @@
 <script type="text/javascript" language="JavaScript">
 <!-- //
 
-// var query = "http:\/\/api.npr.org/query\?\&searchTerm\=tynan\&numResults\=20"
 var query = window.location.search;
 query = query.substr(1);
 // alert(query);
-// http:\/\/api.npr.org\/query\?"
-queryString = query + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=JSON\&callback\=parseJSON"
 
 // for additional variables that may find their way into the query string check out the way the values for document.selectionForm.queryBox.value are built here:
 // http://npr-simile-timeline.googlecode.com/svn/trunk/qglite.js
 
+function embedThis(){
+
+embedAddress = "http://npr-simile-timeline.googlecode.com/svn/trunk/embed.html?";
+embedAddress = embedAddress + query;
+// alert(embedAddress);
+
+embedString = "Embed Timeline";
+// alert(embedString);
+
+document.getElementById('linkToEmbed').innerHTML = embedString;
+document.getElementById('linkToEmbed').href = embedAddress;
+
+
+shareAddress = document.location.href;
+// alert(shareAddress);
+
+shareString = "Link To Timeline";
+// alert(shareString);
+
+document.getElementById('linkToShare').innerHTML = shareString;
+document.getElementById('linkToShare').href = shareAddress;
+return;
+
+}
 // -->
 </script>
 </head>
-<body  onresize="onResize();" >
-<div id="my-timeline" class="timeline-default" style="height: 200px;width: 100%"></div>
+<body onLoad="embedThis();" onresize="onResize();" >
+<div id="my-timeline" class="timeline-default" style="height: 95%;width: 100%;"></div>
+<div id="embedDiv" style="height: 5%;background-color:#DDDDDD;text-align: right;font-size:small;font-family: arial,sans-serif;"><a href="" id="linkToShare"></a> | <a href="" id="linkToEmbed"></a> | <a href="http://npr-simile-timeline.googlecode.com">About the NPR Timeline</a></div>
 
 
 <script type="text/javascript" language="JavaScript">
@@ -31,7 +53,7 @@ queryString = query + "\&apiKey\=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004\&output\=
 document.write('<sc'+'ript');
 document.write(' type="text/javascript"');
 document.write(' language="JavaScript"');
-document.write(' src="'+ queryString +'">');
+document.write(' src="'+ query +'">');
 document.write('</sc'+'ript>');
 </script>
     
