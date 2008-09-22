@@ -11,7 +11,7 @@ while(curDate-date < millis);
 
 // from the simile cubism tutorial
 // http://simile.mit.edu/timeline/examples/cubism/cubism.html
-var tl;
+
 function parseJSON(newjsondata) {
 
 	entries = newjsondata.list;
@@ -57,13 +57,21 @@ function parseJSON(newjsondata) {
 pausecomp(1000);
 // alert(JSONstring.make(eventSource));
 
+
 //create the timeline
-  var bandInfos = [
+var tl;
+var theme = Timeline.ClassicTheme.create();
+	theme.event.label.width = 400; // px
+	theme.event.bubble.width = 400;
+	theme.event.bubble.height = 300;
+
+var bandInfos = [
     Timeline.createBandInfo({
         trackGap:       0.2,
         width:          "70%",
         intervalUnit:   Timeline.DateTime.WEEK,
         intervalPixels: 100,
+        theme: theme,
         eventSource: eventSource
     }),
     Timeline.createBandInfo({
@@ -73,6 +81,7 @@ pausecomp(1000);
         width:          "30%",
         intervalUnit:   Timeline.DateTime.MONTH,
         intervalPixels: 150,
+        theme: theme,
         eventSource: eventSource
     })
   ];
