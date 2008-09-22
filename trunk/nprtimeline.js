@@ -62,8 +62,8 @@ pausecomp(1000);
 var tl;
 var theme = Timeline.ClassicTheme.create();
 	theme.event.label.width = 400; // px
-	theme.event.bubble.width = 400;
-	theme.event.bubble.height = 300;
+	// theme.event.bubble.width = 400;
+	// theme.event.bubble.height = 300;
 
 var bandInfos = [
     Timeline.createBandInfo({
