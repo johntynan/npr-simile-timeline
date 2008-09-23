@@ -1,8 +1,29 @@
+@charset "utf-8";
+a:link { color: #0000cc; }
+body { background: #fff; margin: 3px 8px;}
+body, select, input { font-family: arial, sans-serif;}
+body { font-size: 83%;}
+td td, th th, th td, td th { font-size: 100%;}
+pre { font-size: 110%;}
+form { padding:0; margin:0;}
+h1 { font-size: x-large; margin-top: 0px; }
+h2 { font-size: large; }
+h3 { font-size: medium; }
+h4 { font-size: small; }
+
 .my-timeline.timeline-message-container {
+    font-family: arial, sans-serif;
     font-size:      20%;
 }
 .my-timeline.timeline-message {
+    font-family: arial, sans-serif;
     font-size:      20%;
     font-weight:    bold;
     text-align:     center;
+}
+.my-timeline.event.label {
+    font-family: arial, sans-serif;
+}
+.my-timeline.event.bubble {
+    font-family: arial, sans-serif;
 }
