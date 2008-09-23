@@ -15,4 +15,4 @@ The [http://npr-simile-timeline.googlecode.com/svn/trunk/newsample.html NPR SIMI
 
 This script owes an incredible amount to the NPR Digital Media team. You can find out more about the NPR API [http://api.npr.org/ here]. You can also read about what they're up to on their blog [http://npr.org/blogs/inside Inside NPR].
 
-This also owes a great deal to the [http://code.google.com/p/simile-widgets/ Simile Timeline] project. You can read the documentation [http://simile.mit.edu/wiki/Timeline here], or ask a question about the timeline widget [http://groups.google.com/group/simile-widgets here].
+This project equally owes a great amount to the [http://code.google.com/p/simile-widgets/ Simile Timeline] project. You can read the documentation [http://simile.mit.edu/wiki/Timeline here], or ask a question about the timeline widget [http://groups.google.com/group/simile-widgets here].
