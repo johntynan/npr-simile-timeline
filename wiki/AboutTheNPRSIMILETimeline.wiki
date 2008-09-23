@@ -1,0 +1,18 @@
+= About the NPR SIMILE Timeline =
+
+== Introduction ==
+
+The [http://npr-simile-timeline.googlecode.com/svn/trunk/newsample.html NPR SIMILE Timeline] (Beta) allows you to display a listing of NPR stories on a timeline.  This timeline, made entirely of open source technologies,  connects the [http://api.npr.org NPR API] to MIT's [http://code.google.com/p/simile-widgets/ Simile Timeline] javascript application.  In addition to using this to display a timeline in your blog, to link to a timeline, or to send a timeline in email, you are welcome to become involved by [http://code.google.com/p/npr-simile-timeline/issues/list suggesting enhancements] to this application  or to [http://code.google.com/p/npr-simile-timeline/source/checkout repurpose the code entirely] in your own applications.
+
+== Details ==
+
+    * View the [http://npr-simile-timeline.googlecode.com/svn/trunk/newsample.html NPR SIMILE Timeline] (Note: this script also allows you to create the necessary code to put a timeline on your site)
+
+    * View a [http://johntynan.com/presentations/nprtimeline/01/ presentation] about how the timeline works.
+
+
+The [http://npr-simile-timeline.googlecode.com/svn/trunk/newsample.html NPR SIMILE Timeline] is a set of files which connects the [http://api.npr.org/ NPR API] to MIT's [http://code.google.com/p/simile-widgets/ Simile Timeline] javascript application.  At the moment, the basic structure of this application consists of a "portable query generator" to generate a query of the NPR API and a "json parser" to incorporate the results of these queries into MIT's timeline scripts.  A side-goal of this project is to make the NPR Simile Timeline as portable as possible, to make it something that is scripted in the browser as much as possible.  To make something that is as transparent as possible which can serve as a nucleus for other mashups involving the NPR API.
+
+This script owes an incredible amount to the NPR Digital Media team. You can find out more about the NPR API [http://api.npr.org/ here]. You can also read about what they're up to on their blog [http://npr.org/blogs/inside Inside NPR].
+
+This also owes a great deal to the [http://code.google.com/p/simile-widgets/ Simile Timeline] project. You can read the documentation [http://simile.mit.edu/wiki/Timeline here], or ask a question about the timeline widget [http://groups.google.com/group/simile-widgets here].
