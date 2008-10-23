@@ -225,7 +225,7 @@ if ((document.selectionForm.selectedTopics.value.length == 0) || ( document.sele
        {
        selectedTopicsString = document.selectionForm.selectedTopics.value + ',';
        }
-       else if ((document.selectionForm.selectedSeries.value.length =! 0) || ( document.selectionForm.selectedSeries.value == null))
+       else if ((document.selectionForm.selectedSeries.value.length =! 0) || ( document.selectionForm.selectedSeries.value =! null))
        {
        selectedTopicsString = document.selectionForm.selectedTopics.value + ',';
        }
@@ -325,9 +325,18 @@ if ((document.selectionForm.pEDate.value.length==0) || ( document.selectionForm.
        pEDateString = '&endDate=' + document.selectionForm.pEDate.value;
        }
 
+idString =""
+if ((selectedTopicsString.length  +  selectedProgramsString.length + selectedSeriesString.length  + selectedColumnsString.length) >= 1) {
+    idString ="id=";
+}
+else {
+    idString ="";
+}
+
+
 // document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + selectedColumnsString + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
 
-document.selectionForm.queryBox.value = selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + selectedColumnsString + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
+document.selectionForm.queryBox.value = idString + selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + selectedColumnsString + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
 
 // alert(document.selectionForm.queryBox.value);
 
