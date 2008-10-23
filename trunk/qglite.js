@@ -325,7 +325,7 @@ if ((document.selectionForm.pEDate.value.length==0) || ( document.selectionForm.
        pEDateString = '&endDate=' + document.selectionForm.pEDate.value;
        }
 
-idString =""
+idString ="";
 if ((selectedTopicsString.length  +  selectedProgramsString.length + selectedSeriesString.length  + selectedColumnsString.length) >= 1) {
     idString ="id=";
 }
