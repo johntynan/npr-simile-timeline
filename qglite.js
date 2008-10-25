@@ -334,17 +334,14 @@ else {
 }
 
 
-// document.selectionForm.queryBox.value = 'http://api.npr.org/query?id=' + selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + selectedColumnsString + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
-
 document.selectionForm.queryBox.value = idString + selectedTopicsString  +  selectedProgramsString  + selectedSeriesString  + selectedColumnsString + searchTermString + startNumString+ numResultsString+ pDateString + pSDateString + pEDateString;
 
 // alert(document.selectionForm.queryBox.value);
 
-// document.selectionForm.newURL.value ='timeline_new.html?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=parseJSON';
-
-document.selectionForm.newURL.value ='timeline_new.html?id=' + 'http://api.npr.org/query?id=' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=parseJSON';
+document.selectionForm.newURL.value ='timeline_new.html?id=' + 'http://api.npr.org/query?' + document.selectionForm.queryBox.value + '&output=JSON' + '&apiKey=MDAxNzgwMDQ5MDEyMTQ4NzYyMjU4YmY1Yw004' + '&callback=parseJSON';
 
 // alert(document.selectionForm.newURL.value);
+
 }
 
 //end javascript for query string/url
